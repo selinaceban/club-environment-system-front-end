@@ -1,14 +1,22 @@
-import React from 'react';
-import TemperatureComponent from './TemperatureComponent';
+import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import TemperatureComponent from "./TemperatureComponent";
+import Login from "./Login";
 
 const App = () => {
   return (
     <div>
-      <TemperatureComponent />
+      <BrowserRouter>
+        <Routes>
+          <Route path="Login" element={<Login />} />
+          <Route
+            path="TemperatureComponent"
+            element={<TemperatureComponent />}
+          />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 };
 
 export default App;
-
-
