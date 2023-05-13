@@ -1,26 +1,52 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Login.css";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-export default function Login() {
+const Login = () => {
+  const navigate = useNavigate();
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleUsernameChange = (event) => {
+    setUsername(event.target.value);
+  };
+
+  const handlePasswordChange = (event) => {
+    setPassword(event.target.value);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (checkCredentials(username, password)) {
+      navigate("/TemperatureComponent");
+    } else {
+      alert("Invalid username or password");
+    }
+  };
+
+  const checkCredentials = (username, password) => {
+    return username === "Ben Dover" && password === "lmao";
+  };
+
   return (
-    <div className="login-wrapper">
-      <h1>Please Log In</h1>
-      <form>
-        <label>
-          <p>Username</p>
-          <input type="text" />
-        </label>
-        <label>
-          <p>Password</p>
-          <input type="password" />
-        </label>
-        <div>
-          <Link to="/TemperatureComponent">
-            <button type="submit">Submit</button>
-          </Link>
-        </div>
-      </form>
-    </div>
+    <form onSubmit={handleSubmit}>
+      <label>
+        Username:
+        <input type="text" value={username} onChange={handleUsernameChange} />
+      </label>
+      <br />
+      <label>
+        Password:
+        <input
+          type="password"
+          value={password}
+          onChange={handlePasswordChange}
+        />
+      </label>
+      <br />
+      <button type="submit">Log In</button>
+    </form>
   );
-}
+};
+
+export default Login;
