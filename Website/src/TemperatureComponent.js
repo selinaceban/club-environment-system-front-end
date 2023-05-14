@@ -8,6 +8,11 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'r
 
 const TemperatureComponent = () => {
   const [temperatureData, setTemperatureData] = useState([]);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const handleMenuToggle = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -33,26 +38,63 @@ const TemperatureComponent = () => {
   
   return (
     <div>
-      {/* Navbar */}
-      <nav className="bg-gray-800 py-4">
+    {/* Navbar */}
+    <nav className="bg-gray-800 py-4">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="flex justify-between items-center">
+          <div className="flex items-center justify-between">
             {/* Left side */}
-            <div>
+            <div className="flex items-center">
               <h1 className="text-white text-2xl font-bold">Venue Air Management</h1>
             </div>
 
+            {/* Menu icon (visible on smaller screens) */}
+            <div className="md:hidden">
+              <button
+                type="button"
+                onClick={handleMenuToggle}
+                className="text-gray-300 hover:text-white focus:outline-none focus:text-white"
+              >
+                <svg
+                  className="h-6 w-6 fill-current"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  {isMenuOpen ? (
+                    <path
+                      fillRule="evenodd"
+                      clipRule="evenodd"
+                      d="M19 11H5V9H19V11ZM19 5H5V7H19V5ZM19 17H5V15H19V17Z"
+                    />
+                  ) : (
+                    <path
+                      fillRule="evenodd"
+                      clipRule="evenodd"
+                      d="M4 6H20V8H4V6ZM4 12H20V14H4V12ZM20 18H4V16H20V18Z"
+                    />
+                  )}
+                </svg>
+              </button>
+            </div>
+
             {/* Right side */}
-            <div>
+            <div
+              className={`${
+                isMenuOpen ? 'block' : 'hidden'
+              } md:block mt-4 md:mt-0`}
+            >
               <a href="#" className="text-white hover:text-white text-base mx-4 font-semibold 
               {{ currentPage === 'link1' ? 'text-white font-bold' : '' }}">Readings</a>
-              <a href="#" className="text-gray-300 hover:text-white text-base mx-4">Link 2</a>
-              <a href="#" className="text-gray-300 hover:text-white text-base mx-4">Link 3</a>
+              <a href="#" className="text-gray-300 hover:text-white text-base md:mx-4">
+                Link 2
+              </a>
+              <a href="#" className="text-gray-300 hover:text-white text-base md:mx-4">
+                Link 3
+              </a>
             </div>
           </div>
         </div>
       </nav>
-    <div className="container mx-auto">
+        <div className="container mx-auto">
       <h1 className="text-2xl font-bold mb-4">Readings</h1>
       <div className="overflow-x-auto">
         <table className="table-auto w-full border-collapse border border-gray-300">
