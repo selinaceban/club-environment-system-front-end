@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 //Notes temperature means reading, It's because I was doing first for only temperature
 //so then I just addapted the code and didn't have time to rename everything
 import React, { useState, useEffect } from "react";
@@ -32,37 +33,64 @@ const TemperatureComponent = () => {
   
   return (
     <div>
-      <h1>Readings</h1>
-      <table>
-        <tr>
-          <th>ID</th>
-          <th>Date</th>
-          <th>Temperature</th>
-          <th>Humidity</th>
-          <th>CO2</th>
-          <th>Sound</th>
-          <th>Light</th>
-          <th>Code</th>
-        </tr>
-        {temperatureData.length > 0 ? (
-          temperatureData.map((reading, index) => (
-            //<div key={index}>
+     {/* Navbar */}
+     <nav className="bg-gray-800 py-4">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="flex justify-between">
+            {/* Left side */}
+            <div className="flex items-center">
+              <h1 className="text-white text-2xl font-bold">Venue Air Management</h1>
+            </div>
+
+            {/* Right side */}
+            <div className="flex items-center">
+              <a href="#" className="text-white text-base mx-4">Link 1</a>
+              <a href="#" className="text-white text-base mx-4">Link 2</a>
+              <a href="#" className="text-white text-base mx-4">Link 3</a>
+            </div>
+          </div>
+        </div>
+      </nav>
+    <div className="container mx-auto">
+      <h1 className="text-2xl font-bold mb-4">Readings</h1>
+      <div className="overflow-x-auto">
+        <table className="table-auto w-full border-collapse border border-gray-300">
+          <thead>
             <tr>
-              <td>{index + 1}</td>
-              <td>{reading.timeReceived}</td>
-              <td>{reading.temperature}</td>
-              <td>{reading.humidity}</td>
-              <td>{reading.co2}</td>
-              <td>{reading.sound}</td>
-              <td>{reading.light}</td>
-              <td>{reading.code}</td>
+              <th className="border border-gray-300 px-4 py-2">ID</th>
+              <th className="border border-gray-300 px-4 py-2">Date</th>
+              <th className="border border-gray-300 px-4 py-2">Temperature</th>
+              <th className="border border-gray-300 px-4 py-2">Humidity</th>
+              <th className="border border-gray-300 px-4 py-2">CO2</th>
+              <th className="border border-gray-300 px-4 py-2">Sound</th>
+              <th className="border border-gray-300 px-4 py-2">Light</th>
+              <th className="border border-gray-300 px-4 py-2">Code</th>
             </tr>
-            //</div>
-          ))
-        ) : (
-          <p>No temperature data available</p>
-        )}
-      </table>
+          </thead>
+          <tbody>
+            {temperatureData.length > 0 ? (
+              temperatureData.map((reading, index) => (
+                <tr key={index}>
+                  <td className="border border-gray-300 px-4 py-2">{index + 1}</td>
+                  <td className="border border-gray-300 px-4 py-2">{reading.timeReceived}</td>
+                  <td className="border border-gray-300 px-4 py-2">{reading.temperature}</td>
+                  <td className="border border-gray-300 px-4 py-2">{reading.humidity}</td>
+                  <td className="border border-gray-300 px-4 py-2">{reading.co2}</td>
+                  <td className="border border-gray-300 px-4 py-2">{reading.sound}</td>
+                  <td className="border border-gray-300 px-4 py-2">{reading.light}</td>
+                  <td className="border border-gray-300 px-4 py-2">{reading.code}</td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td className="border border-gray-300 px-4 py-2" colSpan="8">
+                  No temperature data available
+                </td>
+              </tr>
+            )}
+          </tbody>
+        </table>
+      </div>
     
 
       <h1>Temperature</h1>
@@ -108,7 +136,7 @@ const TemperatureComponent = () => {
       ) : (
         <p>No temperature data available</p>
       )}
-      
+      </div>
     </div>
   );
 };
