@@ -33,20 +33,21 @@ const TemperatureComponent = () => {
   
   return (
     <div>
-     {/* Navbar */}
-     <nav className="bg-gray-800 py-4">
+      {/* Navbar */}
+      <nav className="bg-gray-800 py-4">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="flex justify-between">
+          <div className="flex justify-between items-center">
             {/* Left side */}
-            <div className="flex items-center">
+            <div>
               <h1 className="text-white text-2xl font-bold">Venue Air Management</h1>
             </div>
 
             {/* Right side */}
-            <div className="flex items-center">
-              <a href="#" className="text-white text-base mx-4">Link 1</a>
-              <a href="#" className="text-white text-base mx-4">Link 2</a>
-              <a href="#" className="text-white text-base mx-4">Link 3</a>
+            <div>
+              <a href="#" className="text-white hover:text-white text-base mx-4 font-semibold 
+              {{ currentPage === 'link1' ? 'text-white font-bold' : '' }}">Readings</a>
+              <a href="#" className="text-gray-300 hover:text-white text-base mx-4">Link 2</a>
+              <a href="#" className="text-gray-300 hover:text-white text-base mx-4">Link 3</a>
             </div>
           </div>
         </div>
