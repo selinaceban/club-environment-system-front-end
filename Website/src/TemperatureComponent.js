@@ -2,6 +2,8 @@
 //so then I just addapted the code and didn't have time to rename everything
 import React, { useState, useEffect } from "react";
 import "./App.css";
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
+
 
 const TemperatureComponent = () => {
   const [temperatureData, setTemperatureData] = useState([]);
@@ -27,6 +29,7 @@ const TemperatureComponent = () => {
     return () => clearInterval(interval); // Clean up the interval on component unmount
   }, []);
 
+  
   return (
     <div>
       <h1>Readings</h1>
@@ -60,6 +63,52 @@ const TemperatureComponent = () => {
           <p>No temperature data available</p>
         )}
       </table>
+    
+
+      <h1>Temperature</h1>
+      {temperatureData.length > 0 ? (
+        <div>
+          <LineChart width={500} height={300} data={temperatureData}>
+            <XAxis dataKey="timeReceived" />
+            <YAxis />
+            <CartesianGrid strokeDasharray="3 3" />
+            <Tooltip />
+            <Legend />
+            <Line type="monotone" dataKey="temperature" stroke="#8884d8" />
+          </LineChart>
+          {temperatureData.map((reading, index) => (
+            <div key={index}>
+              {/* Display the individual temperature readings */}
+              <p>Temperature: {reading.temperature}</p>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <p>No temperature data available</p>
+      )}
+      
+      <h1>Humidity</h1>
+      {temperatureData.length > 0 ? (
+        <div>
+          <LineChart width={500} height={300} data={temperatureData}>
+            <XAxis dataKey="timeReceived" />
+            <YAxis />
+            <CartesianGrid strokeDasharray="3 3" />
+            <Tooltip />
+            <Legend />
+            <Line type="monotone" dataKey="humidity" stroke="#8884d8" />
+          </LineChart>
+          {temperatureData.map((reading, index) => (
+            <div key={index}>
+              {/* Display the individual temperature readings */}
+              <p>humidity: {reading.humidity}</p>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <p>No temperature data available</p>
+      )}
+      
     </div>
   );
 };

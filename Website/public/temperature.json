@@ -11,7 +11,7 @@
   },
   {
     "pir": true,
-    "temperature": 24.2,
+    "temperature": 15 ,
     "humidity": 53,
     "co2": 320,
     "sound": 320,
@@ -21,7 +21,7 @@
   },
   {
       "pir": true,
-      "temperature": 24.2,
+      "temperature": 12,
       "humidity": 53,
       "co2": 320,
       "sound": 320,
