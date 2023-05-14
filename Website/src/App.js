@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import TemperatureComponent from "./TemperatureComponent";
 import Login from "./Login";
+import "./App.css";
 
 const App = () => {
   return (
