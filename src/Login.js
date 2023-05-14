@@ -29,7 +29,8 @@ const Login = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="login-wrapper">
+      <h1>Login</h1>
       <label>
         Username:
         <input type="text" value={username} onChange={handleUsernameChange} />
