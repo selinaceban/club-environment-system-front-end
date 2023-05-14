@@ -6,7 +6,7 @@ import "./App.css";
 
 const App = () => {
   return (
-    <div className="h-full bg-white">
+    <div>
       <BrowserRouter>
         <Routes>
           <Route path="/login" element={<Login />} />
