@@ -29,7 +29,7 @@ const Login = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="login-wrapper">
+    <form onSubmit={handleSubmit} className="bg-blue-500 text-white p-4">
       <h1>Login</h1>
       <label>
         Username:
