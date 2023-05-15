@@ -1,0 +1,100 @@
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "./App.css";
+
+const Limits = () => {
+  const navigate = useNavigate();
+  const [LTemp, setLTemp] = useState("");
+  const [UTemp, setUTemp] = useState("");
+  const [LHum, setLHum] = useState("");
+  const [UHum, setUHum] = useState("");
+  const [CO2, setCO2] = useState("");
+  /*
+  const handleLTempChange = (event) => {
+    setLTemp(event.target.value);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (checkIfValid(username, password)) {
+      navigate("/TemperatureComponent");
+    } else {
+      alert("Invalid username or password");
+    }
+  };
+
+  const checkIfValid = (LTemp, UTemp, LHum, UHum, UCO2) => {
+    return username === "Ben Dover" && password === "lmao";
+  };
+*/
+  return (
+    <div class="bg-white py-24 sm:py-32">
+      <div class="mx-auto grid max-w-7xl gap-x-8 gap-y-20 px-6 lg:px-8 xl:grid-cols-3">
+        <div class=" border max-w-2xl space-y-32 rounded-md px-3.5 py-2.5 text-sm ">
+          <div>
+            <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl text-center">
+              Temperature
+            </h2>
+          </div>
+          <div>
+            <p class="mt-6 text-lg leading-8 text-black-600 text-center">
+              Upper Limit
+            </p>
+            <div class="relative">
+              <span class="absolute inset-y-2 right-2 flex items-center pr-1 text-gray-500">
+                °C
+              </span>
+              <input
+                type="text"
+                class="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              ></input>
+            </div>
+
+            <p class="mt-6 text-lg leading-8 text-gray-400 text-center">
+              Recommended Limit: 24 °C
+            </p>
+          </div>
+
+          <div>
+            <p class="mt-6 text-lg leading-8 text-black-600 text-center">
+              Lower Limit
+            </p>
+            <div class="relative">
+              <span class="absolute inset-y-2 right-2 flex items-center pr-1 text-gray-500">
+                °C
+              </span>
+              <input
+                type="text"
+                class="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              ></input>
+            </div>
+
+            <p class="mt-6 text-lg leading-8 text-gray-400 text-center">
+              Recommended Limit: 20 °C
+            </p>
+          </div>
+        </div>
+        <div class="max-w-2xl">
+          <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl text-center">
+            Humidity
+          </h2>
+          <p class="mt-6 text-lg leading-8 text-gray-600 text-center">
+            Libero fames augue nisl porttitor nisi, quis. Id ac elit odio vitae
+            elementum enim vitae ullamcorper suspendisse.
+          </p>
+        </div>
+        <div class="max-w-2xl">
+          <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl text-center">
+            CO2
+          </h2>
+          <p class="mt-6 text-lg leading-8 text-gray-600">
+            Libero fames augue nisl porttitor nisi, quis. Id ac elit odio vitae
+            elementum enim vitae ullamcorper suspendisse.
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Limits;
