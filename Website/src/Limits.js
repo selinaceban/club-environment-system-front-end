@@ -9,24 +9,44 @@ const Limits = () => {
   const [LHum, setLHum] = useState("");
   const [UHum, setUHum] = useState("");
   const [CO2, setCO2] = useState("");
-  /*
+
   const handleLTempChange = (event) => {
     setLTemp(event.target.value);
   };
 
+  const handleUTempChange = (event) => {
+    setUTemp(event.target.value);
+  };
+
+  const handleUHumChange = (event) => {
+    setUHum(event.target.value);
+  };
+
+  const handleLHumChange = (event) => {
+    setLHum(event.target.value);
+  };
+
+  const handleCO2Change = (event) => {
+    setCO2(event.target.value);
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (checkIfValid(username, password)) {
-      navigate("/TemperatureComponent");
+    if (checkIfValid(LTemp, UTemp, LHum, UHum, CO2)) {
+      alert("insert SendLimits function");
     } else {
-      alert("Invalid username or password");
+      alert("Empty or Invalid Limits");
     }
   };
 
-  const checkIfValid = (LTemp, UTemp, LHum, UHum, UCO2) => {
-    return username === "Ben Dover" && password === "lmao";
+  const checkIfValid = (LTemp, UTemp, LHum, UHum, CO2) => {
+    if (LTemp < UTemp && 0 <= LHum && LHum < UHum && UHum <= 100 && CO2 > 0) {
+      return true;
+    } else {
+      return false;
+    }
   };
-*/
+
   return (
     <div class="bg-white py-24 sm:py-32">
       <div class="mx-auto grid max-w-7xl gap-x-8 gap-y-20 px-6 lg:px-8 xl:grid-cols-3">
@@ -45,6 +65,8 @@ const Limits = () => {
                 °C
               </span>
               <input
+                value={UTemp}
+                onChange={handleUTempChange}
                 type="text"
                 class="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               ></input>
@@ -64,6 +86,8 @@ const Limits = () => {
                 °C
               </span>
               <input
+                value={LTemp}
+                onChange={handleLTempChange}
                 type="text"
                 class="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               ></input>
@@ -89,6 +113,8 @@ const Limits = () => {
                 %
               </span>
               <input
+                value={UHum}
+                onChange={handleUHumChange}
                 type="text"
                 class="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               ></input>
@@ -108,6 +134,8 @@ const Limits = () => {
                 %
               </span>
               <input
+                value={LHum}
+                onChange={handleLHumChange}
                 type="text"
                 class="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               ></input>
@@ -133,12 +161,14 @@ const Limits = () => {
                 ppm
               </span>
               <input
+                value={CO2}
+                onChange={handleCO2Change}
                 type="text"
                 class="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               ></input>
             </div>
             <p class="mt-6 text-lg leading-8 text-gray-400 text-center">
-              Recommended Limit: 800ppm
+              Recommended Limit: 800 ppm
             </p>
           </div>
         </div>
@@ -146,6 +176,7 @@ const Limits = () => {
       <div class="flex justify-center ">
         <button
           type="submit"
+          onClick={handleSubmit}
           class="mt-7 w-96 h-14 items-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
         >
           Save Limits
