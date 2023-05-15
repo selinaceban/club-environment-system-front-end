@@ -11,38 +11,57 @@ const Limits = () => {
   const [CO2, setCO2] = useState("");
 
   const handleLTempChange = (event) => {
-    setLTemp(event.target.value);
+    const LTempValue = event.target.value;
+    const sanitizedLTempValue = LTempValue.replace(/[^0-9]/g, "");
+    setLTemp(sanitizedLTempValue);
   };
 
   const handleUTempChange = (event) => {
-    setUTemp(event.target.value);
+    const UTempValue = event.target.value;
+    const sanitizedUTempValue = UTempValue.replace(/[^0-9]/g, "");
+    setUTemp(sanitizedUTempValue);
   };
 
   const handleUHumChange = (event) => {
-    setUHum(event.target.value);
+    const UHumValue = event.target.value;
+    const sanitizedUHumValue = UHumValue.replace(/[^0-9]/g, "");
+    setUHum(sanitizedUHumValue);
   };
 
   const handleLHumChange = (event) => {
-    setLHum(event.target.value);
+    const LHumValue = event.target.value;
+    const sanitizedLHumValue = LHumValue.replace(/[^0-9]/g, "");
+    setLHum(sanitizedLHumValue);
   };
 
   const handleCO2Change = (event) => {
-    setCO2(event.target.value);
+    const CO2Value = event.target.value;
+    const sanitizedCO2Value = CO2Value.replace(/[^0-9]/g, "");
+    setCO2(sanitizedCO2Value);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
     if (checkIfValid(LTemp, UTemp, LHum, UHum, CO2)) {
       alert("insert SendLimits function");
-    } else {
-      alert("Empty or Invalid Limits");
     }
   };
 
   const checkIfValid = (LTemp, UTemp, LHum, UHum, CO2) => {
-    if (LTemp < UTemp && 0 <= LHum && LHum < UHum && UHum <= 100 && CO2 > 0) {
-      return true;
+    if (parseInt(LTemp) < parseInt(UTemp)) {
+      if (parseInt(LHum) < parseInt(UHum)) {
+        if (0 < parseInt(CO2)) {
+          return true;
+        } else {
+          alert("Invalid CO2 limit");
+          return false;
+        }
+      } else {
+        alert("Invalid Humidity limits");
+        return false;
+      }
     } else {
+      alert("Invalid Temperature limits");
       return false;
     }
   };
@@ -68,6 +87,8 @@ const Limits = () => {
                 value={UTemp}
                 onChange={handleUTempChange}
                 type="text"
+                pattern="[0-9]*"
+                inputmode="numeric"
                 class="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               ></input>
             </div>
