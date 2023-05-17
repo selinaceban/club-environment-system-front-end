@@ -21,11 +21,11 @@
   },
   {
       "pir": true,
-      "temperature": 12,
+      "temperature": 40,
       "humidity": 53,
-      "co2": 320,
-      "sound": 320,
-      "light": 900,
+      "co2": 3004,
+      "sound": 50,
+      "light": 1001,
       "code": 0,
       "timeReceived": "Tue, 6 May 2023 19:11:40 CEST"
     }
