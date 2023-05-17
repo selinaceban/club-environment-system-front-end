@@ -64,7 +64,7 @@ const NavBarComponent = () => {
         </div>
       </nav>
       {/* Sidebar */}
-      <div className="flex">
+      <div className="fixed inset-y-0 left-0 z-10 flex">
         <div
           className={`w-64 bg-white shadow-lg ${
             isSidebarOpen
