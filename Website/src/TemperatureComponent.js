@@ -124,6 +124,162 @@ const TemperatureComponent = () => {
       </nav>
 
       <div className="container mx-auto">
+        {/* Temperature Chart */}
+        <div className={`my-8 bg-gray-100 rounded-md ${isHighTemperature ? 'bg-red-100' : ''}`}>
+          <h1 className="py-1 px-3 text-2xl font-bold mb-4">Temperature</h1>
+          {temperatureData.length > 0 ? (
+            <div>
+              <div className="flex">
+                <div className="w-2/11 pr-4 mx-2">
+                  <LineChart width={1050} height={150} data={temperatureData}>
+                    <XAxis dataKey="timeReceived" />
+                    <YAxis />
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <Tooltip />
+                    <Legend />
+                    <Line
+                      type="monotone"
+                      dataKey="temperature"
+                      stroke="#8884d8"
+                    />
+                  </LineChart>
+                </div>
+                <div className="text-center mx-2">
+                  <p className="text-xl font-semibold mb-2">Last Temperature: <br></br>{temperatureData[temperatureData.length - 1]?.temperature}</p>
+                  <button className="py-1 px-1 bg-gray-800 text-white font-semibold rounded-lg shadow-md hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 align-[4px]">Save Current</button>
+                </div>
+              </div>
+            </div>
+          ) : (
+            <p>No temperature data available</p>
+          )}
+        </div>
+
+        {/* Humidity Chart */}
+        <div className={`my-8 bg-gray-100 rounded-md ${isHighHumidity ? 'bg-red-100' : ''}`}>
+          <h1 className="py-1 px-3 text-2xl font-bold mb-4">Humidity</h1>
+          {temperatureData.length > 0 ? (
+            <div>
+              <div className="flex">
+                <div className="w-2/11 pr-4 mx-2">
+                  <LineChart width={1050} height={150} data={temperatureData}>
+                    <XAxis dataKey="timeReceived" />
+                    <YAxis />
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <Tooltip />
+                    <Legend />
+                    <Line
+                      type="monotone"
+                      dataKey="humidity"
+                      stroke="#8884d8"
+                    />
+                  </LineChart>
+                </div>
+                <div className="text-center mx-2">
+                  <p className="text-xl font-semibold mb-2">Last Humidity: <br></br>{temperatureData[temperatureData.length - 1]?.humidity}</p>
+                  <button className="py-1 px-1 bg-gray-800 text-white font-semibold rounded-lg shadow-md hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 align-[4px]">Save Current</button>
+                </div>
+              </div>
+            </div>
+          ) : (
+            <p>No temperature data available</p>
+          )}
+        </div>
+
+        {/* CO2 Chart */}
+        <div className={`my-8 bg-gray-100 rounded-md ${isHighCo2 ? 'bg-red-100' : ''}`}>
+          <h1 className="py-1 px-3 text-2xl font-bold mb-4">CO2</h1>
+          {temperatureData.length > 0 ? (
+            <div>
+              <div className="flex">
+                <div className="w-2/11 pr-4 mx-2">
+                  <LineChart width={1050} height={150} data={temperatureData}>
+                    <XAxis dataKey="timeReceived" />
+                    <YAxis />
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <Tooltip />
+                    <Legend />
+                    <Line
+                      type="monotone"
+                      dataKey="co2"
+                      stroke="#8884d8"
+                    />
+                  </LineChart>
+                </div>
+                <div className="text-center mx-2">
+                  <p className="text-xl font-semibold mb-2">Last CO2: <br></br>{temperatureData[temperatureData.length - 1]?.co2}</p>
+                  <button className="py-1 px-1 bg-gray-800 text-white font-semibold rounded-lg shadow-md hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 align-[4px]">Save Current</button>
+                </div>
+              </div>
+            </div>
+          ) : (
+            <p>No temperature data available</p>
+          )}
+        </div>
+
+        {/* Sound */}
+       <div className={`my-8 bg-gray-100 rounded-md ${isHighSound ? 'bg-red-100' : ''}`}>
+          <h1 className="py-1 px-3 text-2xl font-bold mb-4">Sound</h1>
+          {temperatureData.length > 0 ? (
+            <div>
+              <div className="flex">
+                <div className="w-2/11 pr-4 mx-2">
+                  <LineChart width={1050} height={150} data={temperatureData}>
+                    <XAxis dataKey="timeReceived" />
+                    <YAxis />
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <Tooltip />
+                    <Legend />
+                    <Line
+                      type="monotone"
+                      dataKey="sound"
+                      stroke="#8884d8"
+                    />
+                  </LineChart>
+                </div>
+                <div className="text-center mx-2">
+                  <p className="text-xl font-semibold mb-2">Last Sound: <br></br>{temperatureData[temperatureData.length - 1]?.sound}</p>
+                  <button className="py-1 px-1 bg-gray-800 text-white font-semibold rounded-lg shadow-md hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 align-[4px]">Save Current</button>
+                </div>
+              </div>
+            </div>
+          ) : (
+            <p>No temperature data available</p>
+          )}
+        </div>
+        {/* Light */}
+        <div className={`my-8 bg-gray-100 rounded-md ${isHighLight ? 'bg-red-100' : ''}`}>
+          <h1 className="py-1 px-3 text-2xl font-bold mb-4">Light</h1>
+          {temperatureData.length > 0 ? (
+            <div>
+              <div className="flex">
+                <div className="w-2/11 pr-4 mx-2">
+                  <LineChart width={1050} height={150} data={temperatureData}>
+                    <XAxis dataKey="timeReceived" />
+                    <YAxis />
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <Tooltip />
+                    <Legend />
+                    <Line
+                      type="monotone"
+                      dataKey="light"
+                      stroke="#8884d8"
+                    />
+                  </LineChart>
+                </div>
+                <div className="text-center mx-2">
+                  <p className="text-xl font-semibold mb-2">Last Light: <br></br>{temperatureData[temperatureData.length - 1]?.light}</p>
+                  <button className="py-1 px-1 bg-gray-800 text-white font-semibold rounded-lg shadow-md hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 align-[4px]">Save Current</button>
+                </div>
+              </div>
+            </div>
+          ) : (
+            <p>No temperature data available</p>
+          )}
+        </div>
+
+ {/* Table to help - remove later */}
+
         <h1 className="text-2xl font-bold mb-4">Readings</h1>
         <div className="overflow-x-auto">
           <table className="table-auto w-full border-collapse border border-gray-300">
@@ -181,161 +337,6 @@ const TemperatureComponent = () => {
             </tbody>
           </table>
         </div>
-
-        {/* Temperature Chart */}
-        <div className={`my-8 bg-gray-100 rounded-md ${isHighTemperature ? 'bg-red-100' : ''}`}>
-          <h1 className="py-1 px-3 text-2xl font-bold mb-4">Temperature</h1>
-          {temperatureData.length > 0 ? (
-            <div>
-              <div className="flex">
-                <div className="w-2/3 pr-4">
-                  <LineChart width={600} height={150} data={temperatureData}>
-                    <XAxis dataKey="timeReceived" />
-                    <YAxis />
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <Tooltip />
-                    <Legend />
-                    <Line
-                      type="monotone"
-                      dataKey="temperature"
-                      stroke="#8884d8"
-                    />
-                  </LineChart>
-                </div>
-                <div className="w-1/2 text-center">
-                  <p className="text-xl font-semibold mb-2">Last Temperature: <br></br>{temperatureData[temperatureData.length - 1]?.temperature}</p>
-                  <button className="py-1 px-1 bg-gray-800 text-white font-semibold rounded-lg shadow-md hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 align-[4px]">Save Current</button>
-                </div>
-              </div>
-            </div>
-          ) : (
-            <p>No temperature data available</p>
-          )}
-        </div>
-
-        {/* Humidity Chart */}
-        <div className={`my-8 bg-gray-100 rounded-md ${isHighHumidity ? 'bg-red-100' : ''}`}>
-          <h1 className="py-1 px-3   text-2xl font-bold mb-4">Humidity</h1>
-          {temperatureData.length > 0 ? (
-            <div>
-              <div className="flex">
-                <div className="w-2/3 pr-4">
-                  <LineChart width={600} height={150} data={temperatureData}>
-                    <XAxis dataKey="timeReceived" />
-                    <YAxis />
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <Tooltip />
-                    <Legend />
-                    <Line
-                      type="monotone"
-                      dataKey="humidity"
-                      stroke="#8884d8"
-                    />
-                  </LineChart>
-                </div>
-                <div className="w-1/2 text-center">
-                  <p className="text-xl font-semibold mb-2">Last humidity: <br></br>{temperatureData[temperatureData.length - 1]?.humidity}</p>
-                  <button className="py-1 px-1 bg-gray-800 text-white font-semibold rounded-lg shadow-md hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 align-[4px]">Save Current</button>
-                </div>
-              </div>
-            </div>
-          ) : (
-            <p>No temperature data available</p>
-          )}
-        </div>
-
-        {/* CO2 Chart */}
-        <div className={`my-8 bg-gray-100 rounded-md ${isHighCo2 ? 'bg-red-100' : ''}`}>
-          <h1 className="py-1 px-3   text-2xl font-bold mb-4">CO2</h1>
-          {temperatureData.length > 0 ? (
-            <div>
-              <div className="flex">
-                <div className="w-2/3 pr-4">
-                  <LineChart width={600} height={150} data={temperatureData}>
-                    <XAxis dataKey="timeReceived" />
-                    <YAxis />
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <Tooltip />
-                    <Legend />
-                    <Line
-                      type="monotone"
-                      dataKey="co2"
-                      stroke="#8884d8"
-                    />
-                  </LineChart>
-                </div>
-                <div className="w-1/2 text-center">
-                  <p className="text-xl font-semibold mb-2">Last co2: <br></br>{temperatureData[temperatureData.length - 1]?.co2}</p>
-                  <button className="py-1 px-1 bg-gray-800 text-white font-semibold rounded-lg shadow-md hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 align-[4px]">Save Current</button>
-                </div>
-              </div>
-            </div>
-          ) : (
-            <p>No temperature data available</p>
-          )}
-        </div>
-
-        {/* Sound */}
-        <div className={`my-8 bg-gray-100 rounded-md ${isHighSound ? 'bg-red-100' : ''}`}>
-          <h1 className="py-1 px-3   text-2xl font-bold mb-4">Sound</h1>
-          {temperatureData.length > 0 ? (
-            <div>
-              <div className="flex">
-                <div className="w-2/3 pr-4">
-                  <LineChart width={600} height={150} data={temperatureData}>
-                    <XAxis dataKey="timeReceived" />
-                    <YAxis />
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <Tooltip />
-                    <Legend />
-                    <Line
-                      type="monotone"
-                      dataKey="sound"
-                      stroke="#8884d8"
-                    />
-                  </LineChart>
-                </div>
-                <div className="w-1/2 text-center">
-                  <p className="text-xl font-semibold mb-2">Last Sound: <br></br>{temperatureData[temperatureData.length - 1]?.sound}</p>
-                  <button className="py-1 px-1 bg-gray-800 text-white font-semibold rounded-lg shadow-md hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 align-[4px]">Save Current</button>
-                </div>
-              </div>
-            </div>
-          ) : (
-            <p>No temperature data available</p>
-          )}
-        </div>
-        {/* Light */}
-        <div className={`my-8 bg-gray-100 rounded-md ${isHighLight ? 'bg-red-100' : ''}`}>
-          <h1 className="py-1 px-3   text-2xl font-bold mb-4">Light</h1>
-          {temperatureData.length > 0 ? (
-            <div>
-              <div className="flex">
-                <div className="w-2/3 pr-4">
-                  <LineChart width={600} height={150} data={temperatureData}>
-                    <XAxis dataKey="timeReceived" />
-                    <YAxis />
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <Tooltip />
-                    <Legend />
-                    <Line
-                      type="monotone"
-                      dataKey="light"
-                      stroke="#8884d8"
-                    />
-                  </LineChart>
-                </div>
-                <div className="w-1/2 text-center">
-                  <p className="text-xl font-semibold mb-2">Last Light: <br></br>{temperatureData[temperatureData.length - 1]?.light}</p>
-                  <button className="py-1 px-1 bg-gray-800 text-white font-semibold rounded-lg shadow-md hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 align-[4px]">Save Current</button>
-                </div>
-              </div>
-            </div>
-          ) : (
-            <p>No temperature data available</p>
-          )}
-        </div>
-
 
       </div>
     </div>
