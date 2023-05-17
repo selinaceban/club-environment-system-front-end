@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./App.css";
 import TemperatureComponent from "./TemperatureComponent";
@@ -45,12 +45,40 @@ const Limits = () => {
     setCO2(sanitizedCO2Value);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     if (checkIfValid(LTemp, UTemp, LHum, UHum, CO2)) {
-      alert("insert SendLimits function");
+      try {
+        const limitsData = {
+          LTemp,
+          UTemp,
+          LHum,
+          UHum,
+          CO2,
+        };
+  
+        const response = await fetch("/limits.json", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(limitsData),
+        });
+  
+        if (response.ok) {
+          alert("Limits saved successfully");
+        } else {
+          throw new Error("Failed to update limits");
+        }
+      } catch (error) {
+        console.error(error);
+        alert("An error occurred while saving limits");
+      }
     }
   };
+  
+  
+  
 
   const checkIfValid = (LTemp, UTemp, LHum, UHum, CO2) => {
     if (parseInt(LTemp) < parseInt(UTemp)) {
@@ -70,6 +98,29 @@ const Limits = () => {
       return false;
     }
   };
+
+  useEffect(() => {
+    const fetchLimitsData = async () => {
+      try {
+        const response = await fetch("limits.json");
+        if (response.ok) {
+          const data = await response.json();
+          setLTemp(data.LTemp);
+          setUTemp(data.UTemp);
+          setLHum(data.LHum);
+          setUHum(data.UHum);
+          setCO2(data.CO2);
+          console.log(data);
+        } else {
+          throw new Error("Failed to fetch limits data");
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchLimitsData();
+  }, []);
 
   return (
     <div>
