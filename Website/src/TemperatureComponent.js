@@ -12,11 +12,9 @@ import {
 
 const TemperatureComponent = () => {
   const [temperatureData, setTemperatureData] = useState([]);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const handleMenuToggle = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+
+  
 
   useEffect(() => {
     const fetchData = async () => {
