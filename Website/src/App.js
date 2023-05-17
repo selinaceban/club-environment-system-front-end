@@ -2,7 +2,6 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import TemperatureComponent from "./TemperatureComponent";
-import Login from "./Login";
 import Limits from "./Limits";
 import LogTableComponent from './LogTableComponent';
 
@@ -33,15 +32,13 @@ const App = () => {
       comment: 'Too low',
     },
   ];
-
   return (
     <div>
       <BrowserRouter>
         <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="Limits" element={<Limits />} />
-          <Route path="/TemperatureComponent" element={<TemperatureComponent />} />
-          <Route path="/LogTableComponent" element={<LogTableComponent data={data} />} />
+          <Route path="/limits" element={<Limits />} />
+          <Route path="/" element={<TemperatureComponent />} /> {/* Default route */}
+          <Route path="/log" element={<LogTableComponent data={data} />} />
         </Routes>
       </BrowserRouter>
     </div>
@@ -49,3 +46,8 @@ const App = () => {
 };
 
 export default App;
+
+
+
+
+
