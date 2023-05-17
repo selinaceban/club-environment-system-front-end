@@ -142,7 +142,7 @@ const Limits = () => {
         </div>
       </nav>
       <div class="bg-white py-24 sm:py-32">
-        <div class="mx-auto grid max-w-7xl gap-x-8 gap-y-20 px-6 lg:px-8 xl:grid-cols-3">
+        <div class="mx-auto grid max-w-4xl gap-x-6 gap-y-20 px-6 lg:px-1 xl:grid-cols-3">
           <div class=" border max-w-2xl space-y-16 rounded-md px-3.5 py-2.5 text-sm ">
             <div>
               <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl text-center">
@@ -150,11 +150,11 @@ const Limits = () => {
               </h2>
             </div>
             <div>
-              <p class="mt-6 text-lg leading-8 text-black-600 text-center">
+              <p class="mt-6 mb-2 text-lg leading-8 text-black-600 text-center">
                 Upper Limit
               </p>
               <div class="relative">
-                <span class="absolute inset-y-2 right-2 flex items-center pr-1 text-gray-500">
+                <span class="absolute inset-y-2 right-10 flex items-center pr-1 text-gray-500">
                   °C
                 </span>
                 <input
@@ -167,17 +167,17 @@ const Limits = () => {
                 ></input>
               </div>
 
-              <p class="mt-6 text-lg leading-8 text-gray-400 text-center">
+              <p class="mt-2 text-lg leading-8 text-gray-400 text-center">
                 Recommended Limit: 24 °C
               </p>
             </div>
 
             <div>
-              <p class="mt-6 text-lg leading-8 text-black-600 text-center">
+              <p class="mt-6 mb-2 text-lg leading-8 text-black-600 text-center">
                 Lower Limit
               </p>
               <div class="relative">
-                <span class="absolute inset-y-2 right-2 flex items-center pr-1 text-gray-500">
+                <span class="absolute inset-y-2 right-10 flex items-center pr-1 text-gray-500">
                   °C
                 </span>
                 <input
@@ -188,7 +188,7 @@ const Limits = () => {
                 ></input>
               </div>
 
-              <p class="mt-6 text-lg leading-8 text-gray-400 text-center">
+              <p class="mt-2 text-lg leading-8 text-gray-400 text-center">
                 Recommended Limit: 18 °C
               </p>
             </div>
@@ -200,11 +200,11 @@ const Limits = () => {
               </h2>
             </div>
             <div>
-              <p class="mt-6 text-lg leading-8 text-black-600 text-center">
+              <p class="mt-6 mb-2 text-lg leading-8 text-black-600 text-center">
                 Upper Limit
               </p>
               <div class="relative">
-                <span class="absolute inset-y-2 right-2 flex items-center pr-1 text-gray-500">
+                <span class="absolute inset-y-2 right-10 flex items-center pr-1 text-gray-500">
                   %
                 </span>
                 <input
@@ -215,17 +215,17 @@ const Limits = () => {
                 ></input>
               </div>
 
-              <p class="mt-6 text-lg leading-8 text-gray-400 text-center">
+              <p class="mt-2 text-lg leading-8 text-gray-400 text-center">
                 Recommended Limit: 60 %
               </p>
             </div>
 
             <div>
-              <p class="mt-6 text-lg leading-8 text-black-600 text-center">
+              <p class="mt-6 mb-2 text-lg leading-8 text-black-600 text-center">
                 Lower Limit
               </p>
               <div class="relative">
-                <span class="absolute inset-y-2 right-2 flex items-center pr-1 text-gray-500">
+                <span class="absolute inset-y-2 right-10 flex items-center pr-1 text-gray-500">
                   %
                 </span>
                 <input
@@ -236,7 +236,7 @@ const Limits = () => {
                 ></input>
               </div>
 
-              <p class="mt-6 text-lg leading-8 text-gray-400 text-center">
+              <p class="mt-2 text-lg leading-8 text-gray-400 text-center">
                 Recommended Limit: 30 %
               </p>
             </div>
@@ -248,11 +248,11 @@ const Limits = () => {
               </h2>
             </div>
             <div>
-              <p class="mt-6 text-lg leading-8 text-black-600 text-center">
+              <p class="mt-12 mb-2 text-lg leading-8 text-black-600 text-center">
                 Upper Limit
               </p>
               <div class="relative">
-                <span class="absolute inset-y-2 right-2 flex items-center pr-1 text-gray-500">
+                <span class="absolute inset-y-2 right-5 flex items-center pr-1 text-gray-500">
                   ppm
                 </span>
                 <input
@@ -262,7 +262,7 @@ const Limits = () => {
                   class="mx-auto block w-1/4 rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 ></input>
               </div>
-              <p class="mt-6 text-lg leading-8 text-gray-400 text-center">
+              <p class="mt-2 text-lg leading-8 text-gray-400 text-center">
                 Recommended Limit: 800 ppm
               </p>
             </div>
