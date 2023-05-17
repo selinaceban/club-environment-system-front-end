@@ -5,6 +5,8 @@ import TemperatureComponent from './TemperatureComponent';
 import LogTableComponent from './LogTableComponent';
 
 const App = () => {
+
+  //the data array is passed as a prop to the LogTableComponent 
   const data = [
     {
       date: '2023-05-15',

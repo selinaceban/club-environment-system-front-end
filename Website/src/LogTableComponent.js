@@ -14,6 +14,7 @@ const LogTableComponent = ({ data }) => {
         </tr>
       </thead>
       <tbody>
+        {/* loops through the data array and creates a table row for each item */}
         {data.map((row, index) => (
           <tr key={index}>
             <td className="py-2 px-4 border-b">{row.date}</td>
@@ -22,6 +23,7 @@ const LogTableComponent = ({ data }) => {
             <td className="py-2 px-4 border-b">{row.co2}</td>
             <td className="py-2 px-4 border-b">{row.comment}</td>
             <td className="py-2 px-4 border-b">
+              {/* buttons for edit and delete actions */}
               <button className="mr-2 bg-blue-500 text-white py-1 px-2 rounded">Edit</button>
               <button className="bg-red-500 text-white py-1 px-2 rounded">Delete</button>
             </td>
