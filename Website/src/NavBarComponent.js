@@ -64,20 +64,12 @@ const NavBarComponent = () => {
         </div>
       </nav>
       {/* Sidebar */}
-      <div className={`fixed inset-y-0 left-0 z-20 ${isSidebarOpen ? "" : "hidden"}`}>
-        
-        <div
-          className={`w-64 bg-white shadow-lg ${
-            isSidebarOpen
-              ? "translate-x-0 ease-out"
-              : "-translate-x-full ease-in"
-          }`}
-        >
-          <Card className="h-full p-4">
-            <div className="mb-2">
-              <Typography variant="h5" color="blue-gray">
-                Sidebar
-              </Typography>
+      <div className={`fixed top-15 left-0 h-500 w-64 bg-white shadow-lg z-20 transform ${isSidebarOpen ? "translate-x-0 ease-out" : "-translate-x-full ease-in"}`}>
+        <Card className="h-full p-4">
+          <div className="mb-2">
+            <Typography variant="h5" color="blue-gray">
+              Sidebar
+            </Typography>
             </div>
             <div>
               <ul>
@@ -122,7 +114,6 @@ const NavBarComponent = () => {
         {/* Content */}
         <div className="flex-1">{/* Your page content goes here */}</div>
       </div>
-    </div>
   );
 };
 
