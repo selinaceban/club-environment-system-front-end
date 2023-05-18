@@ -1,14 +1,14 @@
-
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import TemperatureComponent from "./TemperatureComponent";
-import Limits from "./Limits";
+import LoginComponent from "./LoginComponent";
+import LimitsComponent from "./LimitsComponent";
 import LogTableComponent from './LogTableComponent';
-
+import NavBarComponent from './NavBarComponent';
 
 const App = () => {
 
-  //the data array is passed as a prop to the LogTableComponent 
+  // The data array is passed as a prop to the LogTableComponent
   const data = [
     {
       date: '2023-05-15',
@@ -35,10 +35,12 @@ const App = () => {
   return (
     <div>
       <BrowserRouter>
+        <NavBarComponent />
         <Routes>
-          <Route path="/limits" element={<Limits />} />
-          <Route path="/" element={<TemperatureComponent />} /> {/* Default route */}
-          <Route path="/log" element={<LogTableComponent data={data} />} />
+          <Route path="/LoginComponent" element={<LoginComponent />} />
+          <Route path="/LimitsComponent" element={<LimitsComponent />} />
+          <Route path="/TemperatureComponent" element={<TemperatureComponent />} />
+          <Route path="/LogTableComponent" element={<LogTableComponent data={data} />} />
         </Routes>
       </BrowserRouter>
     </div>

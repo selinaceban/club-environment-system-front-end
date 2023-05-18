@@ -1,7 +1,7 @@
+
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import "./App.css";
-import TemperatureComponent from "./TemperatureComponent";
+
 
 const Limits = () => {
   const [LTemp, setLTemp] = useState("");
@@ -9,12 +9,8 @@ const Limits = () => {
   const [LHum, setLHum] = useState("");
   const [UHum, setUHum] = useState("");
   const [CO2, setCO2] = useState("");
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const handleMenuToggle = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
+ 
   const handleLTempChange = (event) => {
     const LTempValue = event.target.value;
     const sanitizedLTempValue = LTempValue.replace(/[^0-9]/g, "");
@@ -124,74 +120,7 @@ const Limits = () => {
 
   return (
     <div>
-      <nav className="bg-gray-800 py-4">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="flex items-center justify-between">
-            {/* Left side */}
-            <div className="flex items-center">
-              <h1 className="text-white text-2xl font-bold">
-                Venue Air Management
-              </h1>
-            </div>
-
-            {/* Menu icon (visible on smaller screens) */}
-            <div className="md:hidden">
-              <button
-                type="button"
-                onClick={handleMenuToggle}
-                className="text-gray-300 hover:text-white focus:outline-none focus:text-white"
-              >
-                <svg
-                  className="h-6 w-6 fill-current"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  {isMenuOpen ? (
-                    <path
-                      fillRule="evenodd"
-                      clipRule="evenodd"
-                      d="M19 11H5V9H19V11ZM19 5H5V7H19V5ZM19 17H5V15H19V17Z"
-                    />
-                  ) : (
-                    <path
-                      fillRule="evenodd"
-                      clipRule="evenodd"
-                      d="M4 6H20V8H4V6ZM4 12H20V14H4V12ZM20 18H4V16H20V18Z"
-                    />
-                  )}
-                </svg>
-              </button>
-            </div>
-
-            {/* Right side */}
-            <div
-              className={`${
-                isMenuOpen ? "block" : "hidden"
-              } md:block mt-4 md:mt-0`}
-            >
-              <a
-                href="TemperatureComponent"
-                className="text-gray-300 hover:text-white text-base md:mx-4"
-              >
-                Readings
-              </a>
-              <a
-                href="#"
-                className="text-white hover:text-white text-base mx-4 font-semibold 
-              {{ currentPage === 'link2' ? 'text-white font-bold' : '' }}"
-              >
-                Limits
-              </a>
-              <a
-                href="#"
-                className="text-gray-300 hover:text-white text-base md:mx-4"
-              >
-                Link 3
-              </a>
-            </div>
-          </div>
-        </div>
-      </nav>
+   
       <div class="bg-white py-24 sm:py-16">
         <h1 class="mb-16 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl text-center">
           Limits
