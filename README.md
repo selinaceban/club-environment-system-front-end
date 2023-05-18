@@ -1,3 +1,9 @@
+#install this stuff on website foalder
+npm install react
+npm install tailwindcss
+npm install tailwindcss/react
+npm install recharts
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
