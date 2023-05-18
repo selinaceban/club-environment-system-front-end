@@ -64,14 +64,14 @@ const NavBarComponent = () => {
         </div>
       </nav>
       {/* Sidebar */}
-      <div className={`fixed top-15 left-0 h-500 w-64 bg-white shadow-lg z-20 transform ${isSidebarOpen ? "translate-x-0 ease-out" : "-translate-x-full ease-in"}`}>
-        <Card className="h-full p-4">
-          <div className="mb-2">
+      <div className={`fixed top-15 left-0 h-500 w-64 bg-white shadow-lg z-20 transform rounded-md ${isSidebarOpen ? "translate-x-0 ease-out" : "-translate-x-full ease-in"}`}>
+        <Card className="h-full p-4 rounded-md">
+          <div className="mb-2 ">
             <Typography variant="h5" color="blue-gray">
               Sidebar
             </Typography>
             </div>
-            <div>
+            <div className="border-t-2 border-gray-800">
               <ul>
                 <li>
                   <div class="p-4 rounded-lg">

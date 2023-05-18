@@ -76,8 +76,7 @@ const TemperatureComponent = () => {
                 </div>
                 <div className="text-center mx-2">
                   <p className="text-xl font-semibold mb-2">Last Temperature: <br></br>{temperatureData[temperatureData.length - 1]?.temperature}</p>
-                  <button className="py-1 px-1 bg-gray-800 text-white font-semibold rounded-lg shadow-md hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 align-[4px]">Save Current</button>
-                </div>
+                  </div>
               </div>
             </div>
           ) : (
@@ -107,8 +106,7 @@ const TemperatureComponent = () => {
                 </div>
                 <div className="text-center mx-2">
                   <p className="text-xl font-semibold mb-2">Last Humidity: <br></br>{temperatureData[temperatureData.length - 1]?.humidity}</p>
-                  <button className="py-1 px-1 bg-gray-800 text-white font-semibold rounded-lg shadow-md hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 align-[4px]">Save Current</button>
-                </div>
+                  </div>
               </div>
             </div>
           ) : (
@@ -138,7 +136,6 @@ const TemperatureComponent = () => {
                 </div>
                 <div className="text-center mx-2">
                   <p className="text-xl font-semibold mb-2">Last CO2: <br></br>{temperatureData[temperatureData.length - 1]?.co2}</p>
-                  <button className="py-1 px-1 bg-gray-800 text-white font-semibold rounded-lg shadow-md hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 align-[4px]">Save Current</button>
                 </div>
               </div>
             </div>
@@ -169,7 +166,6 @@ const TemperatureComponent = () => {
                 </div>
                 <div className="text-center mx-2">
                   <p className="text-xl font-semibold mb-2">Last Sound: <br></br>{temperatureData[temperatureData.length - 1]?.sound}</p>
-                  <button className="py-1 px-1 bg-gray-800 text-white font-semibold rounded-lg shadow-md hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 align-[4px]">Save Current</button>
                 </div>
               </div>
             </div>
@@ -199,8 +195,7 @@ const TemperatureComponent = () => {
                 </div>
                 <div className="text-center mx-2">
                   <p className="text-xl font-semibold mb-2">Last Light: <br></br>{temperatureData[temperatureData.length - 1]?.light}</p>
-                  <button className="py-1 px-1 bg-gray-800 text-white font-semibold rounded-lg shadow-md hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 align-[4px]">Save Current</button>
-                </div>
+                  </div>
               </div>
             </div>
           ) : (
