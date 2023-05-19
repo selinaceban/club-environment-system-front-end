@@ -17,7 +17,7 @@ const LogTableComponent = () => {
 
   return (
     <div>
-      <h1 class="mb-16 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl text-center">
+      <h1 class="mb-10 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl text-center">
           Day Logs
         </h1>
       <div className='flex flex-col items-center mb-4'>
