@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import TemperatureComponent from "./TemperatureComponent";
+import ReadingsComponent from "./ReadingsComponent";
 import LoginComponent from "./LoginComponent";
 import LimitsComponent from "./LimitsComponent";
 import LogTableComponent from './LogTableComponent';
@@ -39,7 +39,7 @@ const App = () => {
         <Routes>
           <Route path="/LoginComponent" element={<LoginComponent />} />
           <Route path="/LimitsComponent" element={<LimitsComponent />} />
-          <Route path="/TemperatureComponent" element={<TemperatureComponent />} />
+          <Route path="/ReadingsComponent" element={<ReadingsComponent />} />
           <Route path="/LogTableComponent" element={<LogTableComponent data={data} />} />
         </Routes>
       </BrowserRouter>

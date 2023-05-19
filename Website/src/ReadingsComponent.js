@@ -10,7 +10,7 @@ import {
   Legend
 } from "recharts";
 
-const TemperatureComponent = () => {
+const ReadingsComponent = () => {
   const [temperatureData, setTemperatureData] = useState([]);
 
 
@@ -268,4 +268,4 @@ const TemperatureComponent = () => {
   );
 };
 
-export default TemperatureComponent;
+export default ReadingsComponent;
