@@ -5,6 +5,7 @@ import LoginComponent from "./LoginComponent";
 import LimitsComponent from "./LimitsComponent";
 import LogTableComponent from './LogTableComponent';
 import NavBarComponent from './NavBarComponent';
+import FooterComponent from "./FooterComponent";
 
 const App = () => {
 
@@ -42,6 +43,7 @@ const App = () => {
           <Route path="/ReadingsComponent" element={<ReadingsComponent />} />
           <Route path="/LogTableComponent" element={<LogTableComponent data={data} />} />
         </Routes>
+        <FooterComponent/>
       </BrowserRouter>
     </div>
   );
