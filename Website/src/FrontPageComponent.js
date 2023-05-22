@@ -1,12 +1,13 @@
 import React from "react";
+import image from "./images/club.jpg";
 
 const FrontPageComponent = () => {
   return (
     <div>
       <img
-        src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&crop=focalpoint&fp-y=.8&w=2830&h=1500&q=80&blend=111827&sat=-100&exp=15&blend-mode=multiply"
-        alt=""
-        class="absolute h-screen inset-0 z-[-10] w-full object-cover object-right md:object-center"
+        src={image}
+        alt="./images/club.jpg"
+        class=" blur-2xl absolute h-screen inset-0 z-[-10] w-full object-cover object-right md:object-center"
       ></img>
       <div class="relative z-[-10] isolate px-6 lg:px-8">
         <div
