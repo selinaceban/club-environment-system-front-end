@@ -13,10 +13,9 @@ const NavBarComponent = () => {
     <div>
       {/* Nav bar */}
       <nav className="bg-gray-800 py-4">
-        <div className="max-w-7xl mx-auto px-4">
           <div className="flex items-center justify-between">
             {/* Toggle icon button */}
-            <button className="text-white" onClick={toggleSidebar}>
+            <button className="ml-5 text-white" onClick={toggleSidebar}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-6 w-6"
@@ -39,7 +38,7 @@ const NavBarComponent = () => {
             <div
               className={`${
                 isSidebarOpen ? "block" : "hidden"
-              } md:block mt-4 md:mt-0`}
+              } md:block  md:mt-0 mx-5`}
             >
               <a
                 href="ReadingsComponent"
@@ -61,7 +60,6 @@ const NavBarComponent = () => {
               </a>
             </div>
           </div>
-        </div>
       </nav>
       {/* Sidebar */}
       <div className={`fixed top-15 left-0 h-500 w-64 bg-white shadow-lg z-20 transform rounded-md ${isSidebarOpen ? "translate-x-0 ease-out" : "-translate-x-full ease-in"}`}>
