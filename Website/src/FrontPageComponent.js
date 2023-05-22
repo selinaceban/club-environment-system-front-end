@@ -3,11 +3,11 @@ import image from "./images/club.jpg";
 
 const FrontPageComponent = () => {
   return (
-    <div>
+    <div class="absolute inset-0 bg-black z-[-10]">
       <img
         src={image}
         alt="./images/club.jpg"
-        class=" blur-2xl absolute h-screen inset-0 z-[-10] w-full object-cover object-right md:object-center"
+        class="blur-md absolute h-screen inset-0 z-[-10] w-full object-cover object-right md:object-center backdrop-blur-md"
       ></img>
       <div class="relative z-[-10] isolate px-6 lg:px-8">
         <div
