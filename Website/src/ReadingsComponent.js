@@ -10,7 +10,7 @@ import {
   Legend
 } from "recharts";
 
-const TemperatureComponent = () => {
+const ReadingsComponent = () => {
   const [temperatureData, setTemperatureData] = useState([]);
 
 
@@ -203,69 +203,9 @@ const TemperatureComponent = () => {
           )}
         </div>
 
- {/* Table to help - remove later */}
-
-        <h1 className="text-2xl font-bold mb-4">Readings</h1>
-        <div className="overflow-x-auto">
-          <table className="table-auto w-full border-collapse border border-gray-300">
-            {/* Table headers */}
-            <thead>
-              <tr>
-                <th className="border border-gray-300 px-4 py-2">ID</th>
-                <th className="border border-gray-300 px-4 py-2">Date</th>
-                <th className="border border-gray-300 px-4 py-2">Temperature</th>
-                <th className="border border-gray-300 px-4 py-2">Humidity</th>
-                <th className="border border-gray-300 px-4 py-2">CO2</th>
-                <th className="border border-gray-300 px-4 py-2">Sound</th>
-                <th className="border border-gray-300 px-4 py-2">Light</th>
-                <th className="border border-gray-300 px-4 py-2">Code</th>
-              </tr>
-            </thead>
-            {/* Table body */}
-            <tbody>
-              {temperatureData.length > 0 ? (
-                temperatureData.map((reading, index) => (
-                  <tr key={index}>
-                    <td className="border border-gray-300 px-4 py-2">
-                      {index + 1}
-                    </td>
-                    <td className="border border-gray-300 px-4 py-2">
-                      {reading.timeReceived}
-                    </td>
-                    <td className="border border-gray-300 px-4 py-2">
-                      {reading.temperature}
-                    </td>
-                    <td className="border border-gray-300 px-4 py-2">
-                      {reading.humidity}
-                    </td>
-                    <td className="border border-gray-300 px-4 py-2">
-                      {reading.co2}
-                    </td>
-                    <td className="border border-gray-300 px-4 py-2">
-                      {reading.sound}
-                    </td>
-                    <td className="border border-gray-300 px-4 py-2">
-                      {reading.light}
-                    </td>
-                    <td className="border border-gray-300 px-4 py-2">
-                      {reading.code}
-                    </td>
-                  </tr>
-                ))
-              ) : (
-                <tr>
-                  <td className="border border-gray-300 px-4 py-2" colSpan="8">
-                    No temperature data available
-                  </td>
-                </tr>
-              )}
-            </tbody>
-          </table>
-        </div>
-
       </div>
     </div>
   );
 };
 
-export default TemperatureComponent;
+export default ReadingsComponent;

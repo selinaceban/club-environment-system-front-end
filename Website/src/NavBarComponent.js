@@ -42,13 +42,13 @@ const NavBarComponent = () => {
               } md:block mt-4 md:mt-0`}
             >
               <a
-                href="TemperatureComponent"
+                href="ReadingsComponent"
                 className="text-gray-300 hover:text-white text-base md:mx-4"
               >
                 Readings
               </a>
               <a
-                href="Limits"
+                href="LimitsComponent"
                 className="text-gray-300 hover:text-white text-base md:mx-4 "
               >
                 Limits
@@ -76,7 +76,7 @@ const NavBarComponent = () => {
                 <li>
                   <div class="p-4 rounded-lg">
                     <a
-                      href="TemperatureComponent"
+                      href="ReadingsComponent"
                       className="text-xl  hover:text-grey "
                     >
                       Readings
