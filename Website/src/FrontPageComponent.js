@@ -1,5 +1,10 @@
 import React from "react";
-import image from "./images/club.jpg";
+import image1 from "./images/Valhalla.jpg";
+import image2 from "./images/Valhalla2.jpg";
+import image3 from "./images/Valhalla3.jpg";
+import image4 from "./images/Valhalla4.jpg";
+import image5 from "./images/Valhalla5.jpg";
+import image6 from "./images/Valhalla6.jpg";
 
 const FrontPageComponent = () => {
   return (
@@ -50,57 +55,51 @@ const FrontPageComponent = () => {
           <div aria-hidden="true" class="pointer-events-none">
             <div class="flex items-center space-x-6 lg:space-x-32">
               <div class="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
-                <div class=" h-64 w-44 overflow-hidden rounded-lg sm:opacity-0 lg:opacity-100">
+                <div class=" h-64 w-128 overflow-hidden rounded-lg sm:opacity-0 lg:opacity-100">
                   <img
-                    src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-01.jpg"
-                    alt=""
-                    class=" h-full w-full object-cover object-center"
+                    src={image1}
+                    alt="./images/Valhalla.jpg"
+                    class=" h-full w-full object-cover object-center "
                   ></img>
                 </div>
-                <div class="h-64 w-44 overflow-hidden rounded-lg">
+                <div class="h-64 w-128 overflow-hidden rounded-lg">
                   <img
-                    src={image}
-                    alt=""
-                    class="h-full w-full object-cover object-center"
+                    src={image2}
+                    alt="./images/Valhalla2.jpg"
+                    class="h-full w-full object-cover object-center "
                   ></img>
                 </div>
               </div>
               <div class="grid flex-shrink-0 grid-cols-1 gap-y-8 ">
-                <div class="h-64 w-44 overflow-hidden rounded-lg">
+                <div class="h-64 w-128 overflow-hidden rounded-lg">
                   <img
-                    src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-03.jpg"
-                    alt=""
-                    class="  h-full w-full object-cover object-center"
+                    src={image3}
+                    alt="./images/Valhalla3.jpg"
+                    class="  h-full w-full object-cover object-center "
                   ></img>
                 </div>
-                <div class="h-64 w-44 overflow-hidden rounded-lg">
+                <div class="h-64 w-128 overflow-hidden rounded-lg"></div>
+                <div class="h-64 w-128 overflow-hidden rounded-lg">
                   <img
-                    src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-04.jpg"
-                    alt=""
-                    class="  h-full w-full object-cover object-center"
-                  ></img>
-                </div>
-                <div class="h-64 w-44 overflow-hidden rounded-lg">
-                  <img
-                    src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-05.jpg"
-                    alt=""
-                    class="  h-full w-full object-cover object-center"
+                    src={image4}
+                    alt="./images/Valhalla4.jpg"
+                    class="  h-full w-full object-cover object-center "
                   ></img>
                 </div>
               </div>
               <div class="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
-                <div class="h-64 w-44 overflow-hidden rounded-lg">
+                <div class="h-64 w-128 overflow-hidden rounded-lg">
                   <img
-                    src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-06.jpg"
-                    alt=""
-                    class="  h-full w-full object-cover object-center"
+                    src={image5}
+                    alt="./images/Valhalla5.jpg"
+                    class="  h-full w-full object-cover object-center "
                   ></img>
                 </div>
-                <div class="h-64 w-44 overflow-hidden rounded-lg">
+                <div class="h-64 w-128 overflow-hidden rounded-lg">
                   <img
-                    src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-07.jpg"
-                    alt=""
-                    class="  h-full w-full object-cover object-center"
+                    src={image6}
+                    alt="./images/Valhalla6.jpg"
+                    class="  h-full w-full object-cover object-center "
                   ></img>
                 </div>
               </div>
