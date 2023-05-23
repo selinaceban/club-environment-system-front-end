@@ -62,32 +62,32 @@ const FrontPageComponent = () => {
         <img
           src={image1}
           class="absolute top-[12%] left-[55%] w-[350px] h-[250px] rounded-lg "
-          alt="Image 1"
+          alt="./images/Valhalla.jpg"
         ></img>
         <img
           src={image2}
           class="absolute top-[40%] left-[55%] w-[350px] h-[250px] rounded-lg "
-          alt="Image 2"
+          alt="./images/Valhalla2.jpg"
         ></img>
         <img
           src={image3}
           class="absolute top-[68%] left-[55%] w-[350px] h-[250px] rounded-lg "
-          alt="Image 3"
+          alt="./images/Valhalla3.jpg"
         ></img>
         <img
           src={image4}
           class="absolute top-[8%] left-[75%] w-[350px] h-[250px] rounded-lg "
-          alt="Image 4"
+          alt="./images/Valhalla4.jpg"
         ></img>
         <img
           src={image5}
           class="absolute top-[36%] left-[75%] w-[350px] h-[250px] rounded-lg "
-          alt="Image 5"
+          alt="./images/Valhalla5.jpg"
         ></img>
         <img
           src={image6}
           class="absolute top-[64%] left-[75%] w-[350px] h-[250px] rounded-lg "
-          alt="Image 6"
+          alt="./images/Valhalla6.jpg"
         ></img>
       </div>
       {/* <div>
