@@ -40,19 +40,11 @@ const App = () => {
           <Route exact path="/" element={<FrontPageComponent />} />
           <Route path="/LoginComponent" element={<LoginComponent />} />
           <Route path="/LimitsComponent" element={<LimitsComponent />} />
-<<<<<<< HEAD
-          <Route
-            path="/TemperatureComponent"
-            element={<TemperatureComponent />}
-          />
+          <Route path="/ReadingsComponent" element={<ReadingsComponent />} />
           <Route
             path="/LogTableComponent"
             element={<LogTableComponent data={data} />}
           />
-=======
-          <Route path="/ReadingsComponent" element={<ReadingsComponent />} />
-          <Route path="/LogTableComponent" element={<LogTableComponent data={data} />} />
->>>>>>> 13bad44b722ea7338cb0b17e667bd748620a98f3
         </Routes>
       </BrowserRouter>
     </div>
