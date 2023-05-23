@@ -5,7 +5,6 @@ import image3 from "./images/Valhalla3.jpg";
 import image4 from "./images/Valhalla4.jpg";
 import image5 from "./images/Valhalla5.jpg";
 import image6 from "./images/Valhalla6.jpg";
-import ReadingsComponent from "./ReadingsComponent";
 
 const FrontPageComponent = () => {
   return (
