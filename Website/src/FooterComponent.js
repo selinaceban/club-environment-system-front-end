@@ -2,24 +2,24 @@ import React from "react";
 
 const FooterComponent = () => {
   return (
-    <footer className=" bottom-0 bg-gray-800 py-4 text-white">
-       <div className="flex items-center justify-between">
+    <footer className="sticky bottom-0 bg-gray-800 py-4 text-white">
+       <div className=" items-center justify-between">
        <p className="text-center">
        <div>
               <a
-                href="#"
+                href="NotFoundPageComponent"
                 className="text-gray-300 hover:text-white text-base md:mx-4"
               >
                 About Us
               </a>
               <a
-                href="#"
+                href="NotFoundPageComponent"
                 className="text-gray-300 hover:text-white text-base md:mx-4 "
               >
                 FAQs
               </a>
               <a
-                href="#"
+                href="NotFoundPageComponent"
                 className="text-gray-300 hover:text-white text-base md:mx-4"
               >
                 Contact

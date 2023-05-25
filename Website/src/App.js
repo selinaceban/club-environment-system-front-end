@@ -6,6 +6,7 @@ import LimitsComponent from "./LimitsComponent";
 import LogTableComponent from './LogTableComponent';
 import NavBarComponent from './NavBarComponent';
 import FooterComponent from "./FooterComponent";
+import NotFoundPageComponent from "./NotFoundPageComponent";
 
 const App = () => {
 
@@ -42,6 +43,7 @@ const App = () => {
           <Route path="/LimitsComponent" element={<LimitsComponent />} />
           <Route path="/ReadingsComponent" element={<ReadingsComponent />} />
           <Route path="/LogTableComponent" element={<LogTableComponent data={data} />} />
+          <Route path="/NotFoundPageComponent" element={<NotFoundPageComponent />} />
         </Routes>
         <FooterComponent/>
       </BrowserRouter>
