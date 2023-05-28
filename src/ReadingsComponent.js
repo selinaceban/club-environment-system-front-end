@@ -19,7 +19,10 @@ const ReadingsComponent = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        //should get the data from current date but we doj't have the ior running 24/7 so we putted a date
+        //where we know there is data
         const response = await fetch("https://web-api-j4b5eryumq-ez.a.run.app/readings?date=2023-05-22");
+        
         const data = await response.json();
         setTemperatureData(data);
       } catch (error) {
