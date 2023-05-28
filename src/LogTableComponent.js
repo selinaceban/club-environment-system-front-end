@@ -6,6 +6,7 @@ import moment from 'moment';
 const LogTableComponent = () => {
   const [data, setData] = useState([]);
   const [selectedDate, setSelectedDate] = useState(null);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleSubmit = () => {
     // Make an API request here to retrieve JSON data based on the selected date
@@ -17,8 +18,8 @@ const LogTableComponent = () => {
     fetch(`https://web-api-j4b5eryumq-ez.a.run.app/readings?date=${formattedDate}`)
       .then(response => response.json())
       .then(jsonData => setData(jsonData))
+      .then(() => setIsSubmitted(true))
       .catch(error => console.error('Error:', error));
-      console.log(formattedDate);
   };
 
   return (
@@ -71,7 +72,7 @@ const LogTableComponent = () => {
           </tbody>
         </table>
       ) : (
-        <p>No data available</p>
+        isSubmitted && <p className='text-center text-red-400'>No data available</p>
       )}
     </div>
   );
