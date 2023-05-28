@@ -4,11 +4,11 @@ import "./App.css";
 
 
 const Limits = () => {
-  const [LTemp, setLTemp] = useState("");
-  const [UTemp, setUTemp] = useState("");
-  const [LHum, setLHum] = useState("");
-  const [UHum, setUHum] = useState("");
-  const [CO2, setCO2] = useState("");
+  const [minTemperature, setLTemp] = useState("");
+  const [maxTemperature, setUTemp] = useState("");
+  const [minHumidity, setLHum] = useState("");
+  const [maxHumidity, setUHum] = useState("");
+  const [maxCo2, setCO2] = useState("");
 
  
   const handleLTempChange = (event) => {
@@ -43,23 +43,23 @@ const Limits = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    if (checkIfValid(LTemp, UTemp, LHum, UHum, CO2)) {
+    if (checkIfValid(minTemperature, maxTemperature, minHumidity, maxHumidity, maxCo2)) {
       try {
         const limitsData = {
-          LTemp,
-          UTemp,
-          LHum,
-          UHum,
-          CO2,
+          minTemperature,
+          maxTemperature,
+          minHumidity,
+          maxHumidity,
+          maxCo2,
         };
   
-        const response = await fetch("/limits.json", {
-          method: "POST",
+        const response = await fetch("https://web-api-j4b5eryumq-ez.a.run.app/limits", {
+          method: "PATCH",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify(limitsData),
-        });
+        });console.log(limitsData);
   
         if (response.ok) {
           alert("Limits saved successfully");
@@ -76,8 +76,8 @@ const Limits = () => {
   
   
 
-  const checkIfValid = (LTemp, UTemp, LHum, UHum, CO2) => {
-    if (parseInt(LTemp) < parseInt(UTemp)) {
+  const checkIfValid = (minTemperature, UTemp, LHum, UHum, CO2) => {
+    if (parseInt(minTemperature) < parseInt(UTemp)) {
       if (parseInt(LHum) < parseInt(UHum)) {
         if (0 < parseInt(CO2)) {
           return true;
@@ -100,14 +100,12 @@ const Limits = () => {
       try {
         const response = await fetch('https://web-api-j4b5eryumq-ez.a.run.app/limits');
         if (response.ok) {
-          console.log("test");
           const data = await response.json();
           setLTemp(data.minTemperature);
           setUTemp(data.maxTemperature);
           setLHum(data.minHumidity);
           setUHum(data.maxHumidity);
           setCO2(data.maxCo2);
-          console.log(data);
         } else {
           throw new Error("Failed to fetch limits data");
         }
@@ -142,7 +140,7 @@ const Limits = () => {
                   °C
                 </span>
                 <input
-                  value={UTemp}
+                  value={maxTemperature}
                   onChange={handleUTempChange}
                   type="text"
                   pattern="[0-9]*"
@@ -165,7 +163,7 @@ const Limits = () => {
                   °C
                 </span>
                 <input
-                  value={LTemp}
+                  value={minTemperature}
                   onChange={handleLTempChange}
                   type="text"
                   className="mx-auto block w-1/2 rounded-md border-0 py-1.5 pl-2 pr-2 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -192,7 +190,7 @@ const Limits = () => {
                   %
                 </span>
                 <input
-                  value={UHum}
+                  value={maxHumidity}
                   onChange={handleUHumChange}
                   type="text"
                   className="mx-auto block w-1/2 rounded-md border-0 py-1.5 pl-2 pr-2 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -213,7 +211,7 @@ const Limits = () => {
                   %
                 </span>
                 <input
-                  value={LHum}
+                  value={minHumidity}
                   onChange={handleLHumChange}
                   type="text"
                   className="mx-auto block w-1/2 rounded-md border-0 py-1.5 pl-2 pr-2 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -240,7 +238,7 @@ const Limits = () => {
                   ppm
                 </span>
                 <input
-                  value={CO2}
+                  value={maxCo2}
                   onChange={handleCO2Change}
                   type="text"
                   className="mx-auto block w-1/2 rounded-md border-0 py-1.5 pl-2 pr-2 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
