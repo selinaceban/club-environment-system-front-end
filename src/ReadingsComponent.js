@@ -12,10 +12,7 @@ import {
 
 const ReadingsComponent = () => {
   const [temperatureData, setTemperatureData] = useState([]);
-
-
   
-
   useEffect(() => {
     const fetchData = async () => {
       try {
