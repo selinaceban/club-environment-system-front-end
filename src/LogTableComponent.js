@@ -3,14 +3,16 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import moment from 'moment';
 
+
 const LogTableComponent = () => {
   const [data, setData] = useState([]);
   const [selectedDate, setSelectedDate] = useState(null);
-  const [isSubmitted, setIsSubmitted] = useState(false);
+
 
   const handleSubmit = () => {
     // Make an API request here to retrieve JSON data based on the selected date
     // Replace 'apiEndpoint' with your actual API endpoint
+
 
     //https://web-api-j4b5eryumq-ez.a.run.app/readings?date=2023-05-22
     const formattedDate = selectedDate ? moment(selectedDate).format('YYYY-MM-DD') : '';
@@ -19,11 +21,13 @@ const LogTableComponent = () => {
       .then(response => response.json())
       .then(jsonData => setData(jsonData))
       .then(() => setIsSubmitted(true))
+
       .catch(error => console.error('Error:', error));
   };
 
   return (
     <div>
+
       <h1 className="mb-10 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl text-center">
         Day Logs
       </h1>
@@ -74,6 +78,7 @@ const LogTableComponent = () => {
       ) : (
         isSubmitted && <p className='text-center text-red-400'>No data available</p>
       )}
+
     </div>
   );
 };

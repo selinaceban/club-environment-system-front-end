@@ -12,6 +12,7 @@ import {
 
 const ReadingsComponent = () => {
   const [temperatureData, setTemperatureData] = useState([]);
+
   
   useEffect(() => {
     const fetchData = async () => {
@@ -19,7 +20,7 @@ const ReadingsComponent = () => {
         //should get the data from current date but we doj't have the ior running 24/7 so we putted a date
         //where we know there is data
         const response = await fetch("https://web-api-j4b5eryumq-ez.a.run.app/readings?date=2023-05-22");
-        
+      
         const data = await response.json();
         setTemperatureData(data);
       } catch (error) {
@@ -65,11 +66,13 @@ const ReadingsComponent = () => {
   const co2 = temperatureData[temperatureData.length - 1]?.co2;
   const isHighCo2 = co2 > limits?.maxCo2;
 
+
   const sound = temperatureData[temperatureData.length - 1]?.sound;
   const isHighSound = sound > 70;
 
   const light = temperatureData[temperatureData.length - 1]?.light;
   const isHighLight = light > 1000;
+
 
 /*Fix date received */
 const formatXAxisTick = (timeReceived) => {
@@ -88,7 +91,9 @@ const formatXAxisTick = (timeReceived) => {
               <div className="flex">
                 <div className="w-2/11 pr-4 mx-2">
                   <LineChart width={1050} height={150} data={temperatureData}>
+
                   <XAxis dataKey="timeReceived" tickFormatter={formatXAxisTick} />
+
                     <YAxis />
                     <CartesianGrid strokeDasharray="3 3" />
                     <Tooltip />
@@ -118,7 +123,9 @@ const formatXAxisTick = (timeReceived) => {
               <div className="flex">
                 <div className="w-2/11 pr-4 mx-2">
                   <LineChart width={1050} height={150} data={temperatureData}>
+
                   <XAxis dataKey="timeReceived" tickFormatter={formatXAxisTick} />
+
                     <YAxis />
                     <CartesianGrid strokeDasharray="3 3" />
                     <Tooltip />
@@ -148,7 +155,9 @@ const formatXAxisTick = (timeReceived) => {
               <div className="flex">
                 <div className="w-2/11 pr-4 mx-2">
                   <LineChart width={1050} height={150} data={temperatureData}>
+
                   <XAxis dataKey="timeReceived" tickFormatter={formatXAxisTick} />
+
                     <YAxis />
                     <CartesianGrid strokeDasharray="3 3" />
                     <Tooltip />
@@ -178,7 +187,9 @@ const formatXAxisTick = (timeReceived) => {
               <div className="flex">
                 <div className="w-2/11 pr-4 mx-2">
                   <LineChart width={1050} height={150} data={temperatureData}>
+
                   <XAxis dataKey="timeReceived" tickFormatter={formatXAxisTick} />
+
                     <YAxis />
                     <CartesianGrid strokeDasharray="3 3" />
                     <Tooltip />
@@ -207,7 +218,9 @@ const formatXAxisTick = (timeReceived) => {
               <div className="flex">
                 <div className="w-2/11 pr-4 mx-2">
                   <LineChart width={1050} height={150} data={temperatureData}>
+
                   <XAxis dataKey="timeReceived" tickFormatter={formatXAxisTick} />
+
                     <YAxis />
                     <CartesianGrid strokeDasharray="3 3" />
                     <Tooltip />
