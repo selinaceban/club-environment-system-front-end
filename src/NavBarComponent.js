@@ -77,7 +77,7 @@ const NavBarComponent = () => {
             <div className="border-t-2 border-gray-800">
               <ul>
                 <li>
-                  <div class="p-4 rounded-lg">
+                  <div className="p-4 rounded-lg">
                     <a
                       href="ReadingsComponent"
                       className="text-xl  hover:text-grey "
@@ -87,7 +87,7 @@ const NavBarComponent = () => {
                   </div>
                 </li>
                 <li>
-                  <div class="p-4 rounded-lg">
+                  <div className="p-4 rounded-lg">
                     <a
                       href="LimitsComponent"
                       className="text-xl hover:text-grey "
@@ -97,7 +97,7 @@ const NavBarComponent = () => {
                   </div>
                 </li>
                 <li>
-                  <div class="p-4 rounded-lg">
+                  <div className="p-4 rounded-lg">
                     <a
                       href="LogTableComponent"
                       className="text-xl hover:text-grey "
