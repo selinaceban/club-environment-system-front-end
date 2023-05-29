@@ -33,13 +33,17 @@ const ClimateControlToggleComponent = () => {
       .then(response => {
         if (!response.ok) {
           throw new Error('Failed to update climate control state');
+         
         }
+        console.log(response)
         return response.json();
+        
       })
       .then(data => {
         setIsOn(Boolean(data));
       })
       .catch(error => {
+        console.error('Error:', error);
         
       });
   };
