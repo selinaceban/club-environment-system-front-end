@@ -5,6 +5,8 @@ import LoginComponent from "./LoginComponent";
 import LimitsComponent from "./LimitsComponent";
 import LogTableComponent from './LogTableComponent';
 import NavBarComponent from './NavBarComponent';
+import FooterComponent from "./FooterComponent";
+import NotFoundPageComponent from "./NotFoundPageComponent";
 import FrontPageComponent from "./FrontPageComponent";
 
 
@@ -31,6 +33,7 @@ const App = () => {
       humidity: "45%",
       co2: "300 ppm",
       comment: "Too low",
+
     },
   ];
   return (
@@ -38,12 +41,13 @@ const App = () => {
       <BrowserRouter>
         <NavBarComponent />
         <Routes>
-
          <Route exact path="/" element={<FrontPageComponent />} />
           <Route path="/LoginComponent" element={<LoginComponent />} />
           <Route path="/LimitsComponent" element={<LimitsComponent />} />
           <Route path="/ReadingsComponent" element={<ReadingsComponent />} />
           <Route path="/LogTableComponent" element={<LogTableComponent data={data} />} />
+          <Route path="/NotFoundPageComponent" element={<NotFoundPageComponent />} />
+        <FooterComponent/>
         </Routes>
       </BrowserRouter>
     </div>

@@ -9,6 +9,7 @@ const LogTableComponent = () => {
   const [selectedDate, setSelectedDate] = useState(null);
 
 
+
   const handleSubmit = () => {
     // Make an API request here to retrieve JSON data based on the selected date
     // Replace 'apiEndpoint' with your actual API endpoint
@@ -21,7 +22,6 @@ const LogTableComponent = () => {
       .then(response => response.json())
       .then(jsonData => setData(jsonData))
       .then(() => setIsSubmitted(true))
-
       .catch(error => console.error('Error:', error));
   };
 
@@ -78,7 +78,6 @@ const LogTableComponent = () => {
       ) : (
         isSubmitted && <p className='text-center text-red-400'>No data available</p>
       )}
-
     </div>
   );
 };
