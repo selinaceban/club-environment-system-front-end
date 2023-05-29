@@ -7,6 +7,7 @@ import moment from 'moment';
 const LogTableComponent = () => {
   const [data, setData] = useState([]);
   const [selectedDate, setSelectedDate] = useState(null);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
 
 
