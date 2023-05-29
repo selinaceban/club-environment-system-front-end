@@ -23,6 +23,7 @@ const ReadingsComponent = () => {
 
         const data = await response.json();
         setTemperatureData(data);
+        console.log(data); 
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -60,12 +61,17 @@ const ReadingsComponent = () => {
 
   const temperature = temperatureData[temperatureData.length - 1]?.temperature;
   const isHighTemperature = temperature > limits?.maxTemperature;
-  
+
   const humidity = temperatureData[temperatureData.length - 1]?.humidity;
   const isHighHumidity = humidity > limits?.maxHumidity;
   
   const co2 = temperatureData[temperatureData.length - 1]?.co2;
   const isHighCo2 = co2 > limits?.maxCo2;
+
+/*low limits*/
+  
+
+
 
 
 
@@ -76,16 +82,26 @@ const ReadingsComponent = () => {
   const isHighLight = light > 1000;
 
 /*Fix date received */
-const formatXAxisTick = (timeReceived) => {
-  const date = new Date(timeReceived);
-  return `${date.getHours()}:${date.getMinutes()}`;
+const formatXAxisTick = (time) => {
+  const date = new Date(time);
+
+  // Check if the date is valid
+  if (isNaN(date.getTime())) {
+    return ""; // Return an empty string if the date is invalid
+  }
+
+  // Format the tick label
+  const hours = date.getHours().toString().padStart(2, "0");
+  const minutes = date.getMinutes().toString().padStart(2, "0");
+  return `${hours}:${minutes}`;
 };
 
   return (
     <div>
       <div className="container mx-auto">
         {/* Temperature Chart */}
-        <div className={`my-8 bg-gray-100 rounded-md ${isHighTemperature ? 'bg-red-100' : ''}`}>
+        <div className={`my-8 bg-gray-100 rounded-md ${isHighTemperature ? 'bg-red-100' : (temperature <= limits?.minTemperature ? 'bg-blue-100' : '')}`}>
+
           <h1 className="py-1 px-3 text-2xl font-bold mb-4">Temperature</h1>
           {temperatureData.length > 0 ? (
             <div>
@@ -93,7 +109,7 @@ const formatXAxisTick = (timeReceived) => {
                 <div className="w-2/11 pr-4 mx-2">
                   <LineChart width={1050} height={150} data={temperatureData}>
 
-                  <XAxis dataKey="timeReceived" tickFormatter={formatXAxisTick} />
+                  <XAxis dataKey="time" tickFormatter={formatXAxisTick} />
                     <YAxis />
                     <CartesianGrid strokeDasharray="3 3" />
                     <Tooltip />
@@ -116,7 +132,7 @@ const formatXAxisTick = (timeReceived) => {
         </div>
 
         {/* Humidity Chart */}
-        <div className={`my-8 bg-gray-100 rounded-md ${isHighHumidity ? 'bg-red-100' : ''}`}>
+        <div className={`my-8 bg-gray-100 rounded-md ${isHighHumidity ? 'bg-red-100' : (humidity <= limits?.minHumidity ? 'bg-blue-100' : '')}`}>
           <h1 className="py-1 px-3 text-2xl font-bold mb-4">Humidity</h1>
           {temperatureData.length > 0 ? (
             <div>
@@ -124,7 +140,7 @@ const formatXAxisTick = (timeReceived) => {
                 <div className="w-2/11 pr-4 mx-2">
                   <LineChart width={1050} height={150} data={temperatureData}>
 
-                  <XAxis dataKey="timeReceived" tickFormatter={formatXAxisTick} />
+                  <XAxis dataKey="time" tickFormatter={formatXAxisTick} />
 
                     <YAxis />
                     <CartesianGrid strokeDasharray="3 3" />
@@ -155,7 +171,7 @@ const formatXAxisTick = (timeReceived) => {
               <div className="flex">
                 <div className="w-2/11 pr-4 mx-2">
                   <LineChart width={1050} height={150} data={temperatureData}>
-                  <XAxis dataKey="timeReceived" tickFormatter={formatXAxisTick} />
+                  <XAxis dataKey="time" tickFormatter={formatXAxisTick} />
                     <YAxis />
                     <CartesianGrid strokeDasharray="3 3" />
                     <Tooltip />
@@ -185,7 +201,7 @@ const formatXAxisTick = (timeReceived) => {
               <div className="flex">
                 <div className="w-2/11 pr-4 mx-2">
                   <LineChart width={1050} height={150} data={temperatureData}>
-                  <XAxis dataKey="timeReceived" tickFormatter={formatXAxisTick} />
+                  <XAxis dataKey="time" tickFormatter={formatXAxisTick} />
                     <YAxis />
                     <CartesianGrid strokeDasharray="3 3" />
                     <Tooltip />
@@ -214,7 +230,7 @@ const formatXAxisTick = (timeReceived) => {
               <div className="flex">
                 <div className="w-2/11 pr-4 mx-2">
                   <LineChart width={1050} height={150} data={temperatureData}>
-                  <XAxis dataKey="timeReceived" tickFormatter={formatXAxisTick} />
+                  <XAxis dataKey="time" tickFormatter={formatXAxisTick} />
                     <YAxis />
                     <CartesianGrid strokeDasharray="3 3" />
                     <Tooltip />
