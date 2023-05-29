@@ -3,20 +3,120 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import moment from 'moment';
 
+// EditPopup component
+const EditPopup = ({ rowData, onClose, onSubmit }) => {
+  const { id, time, temperature, humidity, co2, comment } = rowData;
+  const [updatedComment, setUpdatedComment] = useState(comment);
+
+  const handleSubmit = () => {
+    const updatedData = { id: rowData.id, comment: updatedComment };
+
+    fetch('https://web-api-j4b5eryumq-ez.a.run.app/comment', {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(updatedData),
+    })
+      .then(response => {
+        if (response.ok) {
+          console.log('Data updated successfully');
+          onSubmit(updatedData); // Pass the updated data to the onSubmit callback
+          onClose(); // Close the popup
+        } else {
+          console.error('Error:', response.statusText);
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  };
+
+  return (
+    <div className="fixed inset-0 flex items-center justify-center z-10">
+      <div className="bg-white rounded-lg shadow-lg p-4">
+        <h2 className="text-lg font-semibold mb-4">Edit Data</h2>
+        <form>
+          <div>
+            <label className="block mb-2 font-medium">ID</label>
+            <input
+              type="text"
+              value={id}
+              className="w-full p-2 border border-gray-300 rounded"
+              disabled
+            />
+          </div>
+          <div className="mt-4">
+            <label className="block mb-2 font-medium">Time Received</label>
+            <input
+              type="text"
+              value={moment(time).format('HH:mm')}
+              className="w-full p-2 border border-gray-300 rounded"
+              disabled
+            />
+          </div>
+          <div className="mt-4">
+            <label className="block mb-2 font-medium">Temperature</label>
+            <input
+              type="text"
+              value={temperature}
+              className="w-full p-2 border border-gray-300 rounded"
+              disabled
+            />
+          </div>
+          <div className="mt-4">
+            <label className="block mb-2 font-medium">Humidity</label>
+            <input
+              type="text"
+              value={humidity}
+              className="w-full p-2 border border-gray-300 rounded"
+              disabled
+            />
+          </div>
+          <div className="mt-4">
+            <label className="block mb-2 font-medium">CO2</label>
+            <input
+              type="text"
+              value={co2}
+              className="w-full p-2 border border-gray-300 rounded"
+              disabled
+            />
+          </div>
+          <div className="mt-4">
+            <label className="block mb-2 font-medium">Comment</label>
+            <textarea
+              value={updatedComment}
+              onChange={event => setUpdatedComment(event.target.value)}
+              className="w-full p-2 border border-gray-300 rounded"
+            />
+          </div>
+        </form>
+        <div className="mt-4 flex justify-end">
+          <button
+            onClick={onClose}
+            className="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg"
+          >
+            Close
+          </button>
+          <button
+            onClick={handleSubmit}
+            className="ml-2 px-4 py-2 bg-blue-500 text-white rounded-lg"
+          >
+            Save
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 const LogTableComponent = () => {
   const [data, setData] = useState([]);
   const [selectedDate, setSelectedDate] = useState(null);
   const [isSubmitted, setIsSubmitted] = useState(false);
-
-
+  const [editPopupData, setEditPopupData] = useState(null);
 
   const handleSubmit = () => {
-    // Make an API request here to retrieve JSON data based on the selected date
-    // Replace 'apiEndpoint' with your actual API endpoint
-
-
-    //https://web-api-j4b5eryumq-ez.a.run.app/readings?date=2023-05-22
     const formattedDate = selectedDate ? moment(selectedDate).format('YYYY-MM-DD') : '';
 
     fetch(`https://web-api-j4b5eryumq-ez.a.run.app/readings?requestDate=${formattedDate}`)
@@ -26,9 +126,21 @@ const LogTableComponent = () => {
       .catch(error => console.error('Error:', error));
   };
 
+  const handleDataUpdate = updatedData => {
+    // Implement your logic to update the data in your component or state
+    console.log('Updated data:', updatedData);
+  };
+
+  const handleEditClick = rowData => {
+    setEditPopupData(rowData);
+  };
+
+  const handleClosePopup = () => {
+    setEditPopupData(null);
+  };
+
   return (
     <div>
-
       <h1 className="mb-10 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl text-center">
         Day Logs
       </h1>
@@ -64,13 +176,18 @@ const LogTableComponent = () => {
           <tbody>
             {data.map((row, index) => (
               <tr key={index}>
-                <td className="py-2 px-4 border-b">{moment(row.timeReceived).format('HH:mm')}</td>
+                <td className="py-2 px-4 border-b">{moment(row.time).format('HH:mm')}</td>
                 <td className="py-2 px-4 border-b">{row.temperature}</td>
                 <td className="py-2 px-4 border-b">{row.humidity}</td>
                 <td className="py-2 px-4 border-b">{row.co2}</td>
                 <td className="py-2 px-4 border-b">{row.comment}</td>
                 <td className="py-2 px-4 border-b">
-                  <button className="mr-2 bg-blue-500 text-white py-1 px-2 rounded">Edit</button>
+                  <button
+                    onClick={() => handleEditClick(row)}
+                    className="mr-2 bg-blue-500 text-white py-1 px-2 rounded"
+                  >
+                    Edit
+                  </button>
                 </td>
               </tr>
             ))}
@@ -78,6 +195,9 @@ const LogTableComponent = () => {
         </table>
       ) : (
         isSubmitted && <p className='text-center text-red-400'>No data available</p>
+      )}
+      {editPopupData && (
+        <EditPopup rowData={editPopupData} onClose={handleClosePopup} onSubmit={handleDataUpdate} />
       )}
     </div>
   );
