@@ -9,78 +9,107 @@ import image6 from "./images/Valhalla6.jpg";
 const FrontPageComponent = () => {
   return (
     <div className="relative overflow-hidden bg-white">
-      <div className="pb-80 pt-16 sm:pb-40 sm:pt-24 lg:pt-40">
-        <div className="relative mx-auto max-w-7xl px-4 sm:static sm:px-6 lg:px-0">
-          <div className="pb-80 pt-16 sm:pb-40 sm:pt-24 lg:pt-40">
+      <div className="pb-20 pt-8 sm:pb-40 sm:pt-12 md:pb-10 md:pt-16 lg:pb-10 lg:pt-20 xl:pb-60 xl:pt-24">
+        <div className="relative mx-auto max-w-7xl px-4 sm:static sm:px-6 lg:px-8">
+          <div className="pb-20 pt-8 sm:pb-40 sm:pt-12 md:pb-10 md:pt-16 lg:pb-10 lg:pt-20 xl:pb-60 xl:pt-24">
             <div className="sm:max-w-lg">
-              <h1 className="ml-36 text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
+              <h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-4xl md:text-5xl lg:text-6xl">
                 Valhalla
               </h1>
-              <p className="mt-4 text-xl text-gray-500">
-                Horsens Student Bar, the place to be on the Friday nights!
+              <p className="mt-4 text-base text-gray-500 sm:text-lg md:text-xl lg:text-2xl">
+                Horsens Student Bar, the place to be on Friday nights!
               </p>
             </div>
-            <div className="mt-20">
+            <div className="mt-10">
               <a
                 href="ReadingsComponent"
-                className="ml-9 z-10 rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-center font-medium text-white hover:bg-indigo-700"
+                className="ml-3 inline-flex items-center justify-center px-4 py-2 text-base font-medium text-white bg-indigo-600 border border-transparent rounded-md hover:bg-indigo-700 sm:w-auto"
               >
                 To Readings
               </a>
               <a
                 href="LimitsComponent"
-                className="ml-4 z-10 rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-center font-medium text-white hover:bg-indigo-700"
+                className="ml-3 inline-flex items-center justify-center px-4 py-2 text-base font-medium text-white bg-indigo-600 border border-transparent rounded-md hover:bg-indigo-700 sm:w-auto"
               >
                 To Limits
               </a>
               <a
                 href="LogTableComponent"
-                className="ml-4 z-10 rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-center font-medium text-white hover:bg-indigo-700"
+                className="ml-3 inline-flex items-center justify-center px-4 py-2 text-base font-medium text-white bg-indigo-600 border border-transparent rounded-md hover:bg-indigo-700 sm:w-auto"
               >
                 To Logs
               </a>
             </div>
           </div>
-          <div
-            aria-hidden="true"
-            className="pointer-events-none lg:absolute lg:inset-y-0 lg:mx-auto lg:w-full lg:max-w-7xl"
-          >
-            <div className="absolute transform sm:left-1/2 sm:top-0 sm:translate-x-8 lg:left-1/2 lg:top-1/2 lg:-translate-y-1/2 lg:translate-x-8">
-              <div className="flex items-center space-x-6 lg:space-x-8"></div>
+          <h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-4xl md:text-5xl lg:text-6xl">gallery</h1>
+          <div className="mt-10">
+            <div className="flex justify-center">
               <div className="grid grid-cols-2 gap-4">
                 <div className="col-span-1">
-                  <img
-                    src={image1}
-                    alt="Image 1"
-                    className="rounded-lg ml-28 mt-10"
-                  ></img>
-                  <img
-                    src={image2}
-                    alt="Image 2"
-                    className="rounded-lg ml-28 my-4"
-                  ></img>
-                  <img
-                    src={image3}
-                    alt="Image 3"
-                    className="rounded-lg ml-28 my-4"
-                  ></img>
+                  <div className="aspect-w-1 aspect-h-1">
+                    <div className="object-cover object-center rounded-lg shadow-lg">
+                      <img
+                        src={image1}
+                        alt="Image 1"
+                        className="rounded-lg"
+                      ></img>
+                    </div>
+                  </div>
+                  <div className="mt-4">
+                    <div className="aspect-w-1 aspect-h-1">
+                      <div className="object-cover object-center rounded-lg shadow-lg">
+                        <img
+                          src={image2}
+                          alt="Image 2"
+                          className="rounded-lg"
+                        ></img>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="mt-4">
+                    <div className="aspect-w-1 aspect-h-1">
+                      <div className="object-cover object-center rounded-lg shadow-lg">
+                        <img
+                          src={image3}
+                          alt="Image 3"
+                          className="rounded-lg"
+                        ></img>
+                      </div>
+                    </div>
+                  </div>
                 </div>
                 <div className="col-span-1">
-                  <img
-                    src={image4}
-                    alt="Image 4"
-                    className="rounded-lg ml-28"
-                  ></img>
-                  <img
-                    src={image5}
-                    alt="Image 5"
-                    className="rounded-lg ml-28 my-4"
-                  ></img>
-                  <img
-                    src={image6}
-                    alt="Image 6"
-                    className="rounded-lg ml-28 my-4"
-                  ></img>
+                  <div className="aspect-w-1 aspect-h-1">
+                    <div className="object-cover object-center rounded-lg shadow-lg">
+                      <img
+                        src={image4}
+                        alt="Image 4"
+                        className="rounded-lg"
+                      ></img>
+                    </div>
+                  </div>
+                  <div className="mt-4">
+                    <div className="aspect-w-1 aspect-h-1">
+                      <div className="object-cover object-center rounded-lg shadow-lg">
+                        <img
+                          src={image5}
+                          alt="Image 5"
+                          className="rounded-lg"
+                        ></img>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="mt-4">
+                    <div className="aspect-w-1 aspect-h-1">
+                      <div className="object-cover object-center rounded-lg shadow-lg">
+                        <img
+                          src={image6}
+                          alt="Image 6"
+                          className="rounded-lg"
+                        ></img>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
