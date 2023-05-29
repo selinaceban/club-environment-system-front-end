@@ -68,7 +68,7 @@ const Limits = () => {
 
         });console.log(limitsData);
 
-        });
+   
   
         if (response.ok) {
           alert("Limits saved successfully");
