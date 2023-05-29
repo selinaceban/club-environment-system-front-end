@@ -19,8 +19,18 @@ const ReadingsComponent = () => {
       try {
         //should get the data from current date but we doj't have the ior running 24/7 so we putted a date
         //where we know there is data
-        const response = await fetch("https://web-api-j4b5eryumq-ez.a.run.app/readings?date=2023-05-22");
 
+      
+        //const response = await fetch("https://web-api-j4b5eryumq-ez.a.run.app/readings?date=2023-05-22");
+        // get the date from today and make a response
+        //make sure that the date is YYYY-MM-DD
+        const date = new Date();
+        const year = date.getFullYear();
+        const month = date.getMonth() + 1;
+        const day = date.getDate();
+        const dateString = `${year}-${month.toString().padStart(2, "0")}-${day.toString().padStart(2, "0")}`;
+        console.log(dateString);
+        const response = await fetch(`https://web-api-j4b5eryumq-ez.a.run.app/readings?date=${dateString}`);
         const data = await response.json();
         setTemperatureData(data);
         console.log(data); 
