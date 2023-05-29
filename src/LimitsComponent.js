@@ -58,7 +58,7 @@ const Limits = () => {
         };
   
         const response = await fetch("https://web-api-j4b5eryumq-ez.a.run.app/limits", {
-          method: "PATCH",
+          method: "PUT",
 
 
           headers: {
