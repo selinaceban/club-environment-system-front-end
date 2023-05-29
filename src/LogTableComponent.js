@@ -19,7 +19,7 @@ const LogTableComponent = () => {
     //https://web-api-j4b5eryumq-ez.a.run.app/readings?date=2023-05-22
     const formattedDate = selectedDate ? moment(selectedDate).format('YYYY-MM-DD') : '';
 
-    fetch(`https://web-api-j4b5eryumq-ez.a.run.app/readings?date=${formattedDate}`)
+    fetch(`https://web-api-j4b5eryumq-ez.a.run.app/readings?requestDate=${formattedDate}`)
       .then(response => response.json())
       .then(jsonData => setData(jsonData))
       .then(() => setIsSubmitted(true))

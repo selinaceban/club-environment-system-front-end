@@ -30,7 +30,7 @@ const ReadingsComponent = () => {
         const day = date.getDate();
         const dateString = `${year}-${month.toString().padStart(2, "0")}-${day.toString().padStart(2, "0")}`;
         console.log(dateString);
-        const response = await fetch(`https://web-api-j4b5eryumq-ez.a.run.app/readings?date=${dateString}`);
+        const response = await fetch(`https://web-api-j4b5eryumq-ez.a.run.app/readings?requestDate=${dateString}`);
         const data = await response.json();
         setTemperatureData(data);
         console.log(data);
