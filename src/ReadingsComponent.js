@@ -102,7 +102,7 @@ const ReadingsComponent = () => {
         {temperatureData.length > 0 ? (
           <div className="flex">
             <div className="w-full md:w-2/3 pr-4">
-              <ResponsiveContainer width="100%" height={150}>
+              <ResponsiveContainer width="110%" height={150}>
                 <LineChart data={temperatureData}>
                   <XAxis dataKey="time" tickFormatter={formatXAxisTick} />
                   <YAxis />
@@ -129,7 +129,7 @@ const ReadingsComponent = () => {
         {temperatureData.length > 0 ? (
           <div className="flex">
             <div className="w-full md:w-2/3 pr-4">
-              <ResponsiveContainer width="100%" height={150}>
+              <ResponsiveContainer width="110%" height={150}>
                 <LineChart data={temperatureData}>
                   <XAxis dataKey="time" tickFormatter={formatXAxisTick} />
                   <YAxis />
@@ -156,7 +156,7 @@ const ReadingsComponent = () => {
         {temperatureData.length > 0 ? (
           <div className="flex">
             <div className="w-full md:w-2/3 pr-4">
-              <ResponsiveContainer width="100%" height={150}>
+              <ResponsiveContainer width="110%" height={150}>
                 <LineChart data={temperatureData}>
                   <XAxis dataKey="time" tickFormatter={formatXAxisTick} />
                   <YAxis />
@@ -183,7 +183,7 @@ const ReadingsComponent = () => {
         {temperatureData.length > 0 ? (
           <div className="flex">
             <div className="w-full md:w-2/3 pr-4">
-              <ResponsiveContainer width="100%" height={150}>
+              <ResponsiveContainer width="110%" height={150}>
                 <LineChart data={temperatureData}>
                   <XAxis dataKey="time" tickFormatter={formatXAxisTick} />
                   <YAxis />
@@ -210,7 +210,7 @@ const ReadingsComponent = () => {
         {temperatureData.length > 0 ? (
           <div className="flex">
             <div className="w-full md:w-2/3 pr-4">
-              <ResponsiveContainer width="100%" height={150}>
+              <ResponsiveContainer width="110%" height={150}>
                 <LineChart data={temperatureData}>
                   <XAxis dataKey="time" tickFormatter={formatXAxisTick} />
                   <YAxis />
