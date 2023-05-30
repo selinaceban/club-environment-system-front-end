@@ -1,21 +1,32 @@
-import checkIfValid from "../LimitsComponent";
+import { checkIfValid } from "../LimitsComponent";
 
-test("checks if limits are valid", () => {
-  // Test case 1: Valid limits
-  expect(checkIfValid(20, 30, 40, 50, 500)).toBe(true);
+describe("checkIfValid", () => {
+  it("returns true when all limits are valid", () => {
+    const result = checkIfValid("10", "20", "30", "40", "50");
+    expect(result).toBe(true);
+  });
 
-  // Test case 2: Invalid CO2 limit
-  expect(() => {
-    checkIfValid(20, 30, 40, 50, -10);
-  }).toThrow("Invalid CO2 limit");
+  it("returns false and alerts for invalid CO2 limit", () => {
+    global.alert = jest.fn(); // Mock the alert function
 
-  // Test case 3: Invalid Humidity limits
-  expect(() => {
-    checkIfValid(20, 30, 60, 50, 100);
-  }).toThrow("Invalid Humidity limits");
+    const result = checkIfValid("10", "20", "30", "40", "-10");
+    expect(result).toBe(false);
+    expect(global.alert).toHaveBeenCalledWith("Invalid CO2 limit");
+  });
 
-  // Test case 4: Invalid Temperature limits
-  expect(() => {
-    checkIfValid(30, 20, 40, 50, 100);
-  }).toThrow("Invalid Temperature limits");
+  it("returns false and alerts for invalid Humidity limits", () => {
+    global.alert = jest.fn(); // Mock the alert function
+
+    const result = checkIfValid("10", "20", "40", "30", "50");
+    expect(result).toBe(false);
+    expect(global.alert).toHaveBeenCalledWith("Invalid Humidity limits");
+  });
+
+  it("returns false and alerts for invalid Temperature limits", () => {
+    global.alert = jest.fn(); // Mock the alert function
+
+    const result = checkIfValid("20", "10", "30", "40", "50");
+    expect(result).toBe(false);
+    expect(global.alert).toHaveBeenCalledWith("Invalid Temperature limits");
+  });
 });
