@@ -28,12 +28,12 @@
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(!isOn),
+        body: JSON.stringify({ isOn: !isOn }),
       })
         .then(response => {
           if (!response.ok) {
             throw new Error('Failed to update climate control state');
-          
+            
           }
           console.log(response)
           return response.json();
@@ -44,6 +44,7 @@
         })
         .catch(error => {
           console.error('Error:', error);
+          
           
         });
     };
