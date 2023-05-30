@@ -9,7 +9,7 @@ const EditPopup = ({ rowData, onClose, onSubmit }) => {
   const [updatedComment, setUpdatedComment] = useState(comment);
 
   const handleSubmit = () => {
-    const updatedData = { id: rowData.id, comment: updatedComment };
+    const updatedData = { id: rowData.id, comment: updatedComment, time: rowData.time, temperature: rowData.temperature, humidity: rowData.humidity, co2: rowData.co2};
 
     fetch('https://web-api-j4b5eryumq-ez.a.run.app/comment', {
       method: 'PUT',
@@ -127,8 +127,15 @@ const LogTableComponent = () => {
   };
 
   const handleDataUpdate = updatedData => {
-    // Implement your logic to update the data in your component or state
-    console.log('Updated data:', updatedData);
+    // After submission of the comment the data should be refreshed to show the updated comment and the rest of the data
+    const updatedDataList = data.map(item => {
+      if (item.id === updatedData.id) {
+        return updatedData;
+      }
+      return item;
+    }
+    );
+    setData(updatedDataList);
   };
 
   const handleEditClick = rowData => {
@@ -180,7 +187,7 @@ const LogTableComponent = () => {
                 <td className="py-2 px-4 border-b">{row.temperature}</td>
                 <td className="py-2 px-4 border-b">{row.humidity}</td>
                 <td className="py-2 px-4 border-b">{row.co2}</td>
-                <td className="py-2 px-4 border-b">{row.comment}</td>
+                <td className="py-2 px-4 border-b" style={{ wordBreak: 'break-word' }}>{row.comment}</td>
                 <td className="py-2 px-4 border-b">
                   <button
                     onClick={() => handleEditClick(row)}
