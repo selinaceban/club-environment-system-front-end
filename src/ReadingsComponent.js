@@ -12,7 +12,7 @@ import {
 } from "recharts";
 
 const ReadingsComponent = () => {
-  const [temperatureData, setTemperatureData] = useState([]);
+  const [data, setdata] = useState([]);
   const [limits, setLimits] = useState(null);
 
   useEffect(() => {
@@ -32,7 +32,7 @@ const ReadingsComponent = () => {
         console.log(dateString);
         const response = await fetch(`https://web-api-j4b5eryumq-ez.a.run.app/readings?requestDate=${dateString}`);
         const data = await response.json();
-        setTemperatureData(data);
+        setdata(data);
         console.log(data);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -42,7 +42,7 @@ const ReadingsComponent = () => {
     fetchData();
     const interval = setInterval(fetchData, 300000); // Refresh every 5 minutes
 
-    return () => clearInterval(interval); // Clean up the interval on component unmount
+    return () => clearInterval(interval); // Clean up the interval 
   }, []);
 
   useEffect(() => {
@@ -64,19 +64,23 @@ const ReadingsComponent = () => {
     fetchLimitsData();
   }, []);
 
-  const temperature = temperatureData[temperatureData.length - 1]?.temperature;
-  const isHighTemperature = temperature > limits?.maxTemperature;
+  const isLimitexceeded = (value, highLimit, lowLimit) => {
+    //check if it exceeds the high and low limits
+    if (value > highLimit || value < lowLimit) {
+      return true;
+    }
+  }
 
-  const humidity = temperatureData[temperatureData.length - 1]?.humidity;
-  const isHighHumidity = humidity > limits?.maxHumidity;
 
-  const co2 = temperatureData[temperatureData.length - 1]?.co2;
-  const isHighCo2 = co2 > limits?.maxCo2;
+  /* Limits from api */
+  const temperature = data[data.length - 1]?.temperature;
+  const humidity = data[data.length - 1]?.humidity;
+  const co2 = data[data.length - 1]?.co2;
 
-  const sound = temperatureData[temperatureData.length - 1]?.sound;
+  /* hard coded limits */
+  const sound = data[data.length - 1]?.sound;
   const isHighSound = sound > 70;
-
-  const light = temperatureData[temperatureData.length - 1]?.light;
+  const light = data[data.length - 1]?.light;
   const isHighLight = light > 1000;
 
   /* Fix date received */
@@ -88,7 +92,7 @@ const ReadingsComponent = () => {
       return ""; // Return an empty string if the date is invalid
     }
 
-    // Format the tick label
+    // Data formating
     const hours = date.getHours().toString().padStart(2, "0");
     const minutes = date.getMinutes().toString().padStart(2, "0");
     return `${hours}:${minutes}`;
@@ -97,13 +101,13 @@ const ReadingsComponent = () => {
   return (
     <div className="container mx-auto">
       {/* Temperature Chart */}
-      <div className={`my-8 bg-gray-100 rounded-md ${isHighTemperature ? 'bg-red-100' : (temperature <= limits?.minTemperature ? 'bg-blue-100' : '')}`}>
+      <div className={`my-8 bg-gray-100 rounded-md ${isLimitexceeded(temperature, limits?.maxTemperature, limits?.minTemperature) ? 'bg-red-100' : ''}`}>
         <h1 className="py-1 px-3 text-2xl font-bold mb-4">Temperature</h1>
-        {temperatureData.length > 0 ? (
+        {data.length > 0 ? (
           <div className="flex">
             <div className="w-full md:w-2/3 pr-4">
               <ResponsiveContainer width="110%" height={150}>
-                <LineChart data={temperatureData}>
+                <LineChart data={data}>
                   <XAxis dataKey="time" tickFormatter={formatXAxisTick} />
                   <YAxis />
                   <CartesianGrid strokeDasharray="3 3" />
@@ -115,7 +119,7 @@ const ReadingsComponent = () => {
             </div>
             <div className="w-full md:w-1/3 text-center">
               <p className="text-xl font-semibold mb-2">Last Temperature:</p>
-              <p className="text-3xl font-bold">{temperatureData[temperatureData.length - 1]?.temperature}</p>
+              <p className="text-3xl font-bold">{data[data.length - 1]?.temperature}</p>
             </div>
           </div>
         ) : (
@@ -124,13 +128,13 @@ const ReadingsComponent = () => {
       </div>
 
       {/* Humidity Chart */}
-      <div className={`my-8 bg-gray-100 rounded-md ${isHighHumidity ? 'bg-red-100' : (humidity <= limits?.minHumidity ? 'bg-blue-100' : '')}`}>
+      <div className={`my-8 bg-gray-100 rounded-md ${isLimitexceeded(humidity, limits?.maxHumidity, limits?.minHumidity) ? 'bg-red-100' : ''}`}>
         <h1 className="py-1 px-3 text-2xl font-bold mb-4">Humidity</h1>
-        {temperatureData.length > 0 ? (
+        {data.length > 0 ? (
           <div className="flex">
             <div className="w-full md:w-2/3 pr-4">
               <ResponsiveContainer width="110%" height={150}>
-                <LineChart data={temperatureData}>
+                <LineChart data={data}>
                   <XAxis dataKey="time" tickFormatter={formatXAxisTick} />
                   <YAxis />
                   <CartesianGrid strokeDasharray="3 3" />
@@ -142,22 +146,22 @@ const ReadingsComponent = () => {
             </div>
             <div className="w-full md:w-1/3 text-center">
               <p className="text-xl font-semibold mb-2">Last Humidity:</p>
-              <p className="text-3xl font-bold">{temperatureData[temperatureData.length - 1]?.humidity}</p>
+              <p className="text-3xl font-bold">{data[data.length - 1]?.humidity}</p>
             </div>
           </div>
         ) : (
-          <p>No temperature data available</p>
+          <p>No Humidity data available</p>
         )}
       </div>
 
       {/* CO2 Chart */}
-      <div className={`my-8 bg-gray-100 rounded-md ${isHighCo2 ? 'bg-red-100' : ''}`}>
+      <div className={`my-8 bg-gray-100 rounded-md ${isLimitexceeded(co2, limits?.maxCo2) ? 'bg-red-100' : ''}`}>
         <h1 className="py-1 px-3 text-2xl font-bold mb-4">CO2</h1>
-        {temperatureData.length > 0 ? (
+        {data.length > 0 ? (
           <div className="flex">
             <div className="w-full md:w-2/3 pr-4">
               <ResponsiveContainer width="110%" height={150}>
-                <LineChart data={temperatureData}>
+                <LineChart data={data}>
                   <XAxis dataKey="time" tickFormatter={formatXAxisTick} />
                   <YAxis />
                   <CartesianGrid strokeDasharray="3 3" />
@@ -169,22 +173,22 @@ const ReadingsComponent = () => {
             </div>
             <div className="w-full md:w-1/3 text-center">
               <p className="text-xl font-semibold mb-2">Last CO2:</p>
-              <p className="text-3xl font-bold">{temperatureData[temperatureData.length - 1]?.co2}</p>
+              <p className="text-3xl font-bold">{data[data.length - 1]?.co2}</p>
             </div>
           </div>
         ) : (
-          <p>No temperature data available</p>
+          <p>No CO2 data available</p>
         )}
       </div>
 
       {/* Sound */}
       <div className={`my-8 bg-gray-100 rounded-md ${isHighSound ? 'bg-red-100' : ''}`}>
         <h1 className="py-1 px-3 text-2xl font-bold mb-4">Sound</h1>
-        {temperatureData.length > 0 ? (
+        {data.length > 0 ? (
           <div className="flex">
             <div className="w-full md:w-2/3 pr-4">
               <ResponsiveContainer width="110%" height={150}>
-                <LineChart data={temperatureData}>
+                <LineChart data={data}>
                   <XAxis dataKey="time" tickFormatter={formatXAxisTick} />
                   <YAxis />
                   <CartesianGrid strokeDasharray="3 3" />
@@ -196,22 +200,22 @@ const ReadingsComponent = () => {
             </div>
             <div className="w-full md:w-1/3 text-center">
               <p className="text-xl font-semibold mb-2">Last Sound:</p>
-              <p className="text-3xl font-bold">{temperatureData[temperatureData.length - 1]?.sound}</p>
+              <p className="text-3xl font-bold">{data[data.length - 1]?.sound}</p>
             </div>
           </div>
         ) : (
-          <p>No temperature data available</p>
+          <p>No Sound data available</p>
         )}
       </div>
 
       {/* Light */}
       <div className={`my-8 bg-gray-100 rounded-md ${isHighLight ? 'bg-red-100' : ''}`}>
         <h1 className="py-1 px-3 text-2xl font-bold mb-4">Light</h1>
-        {temperatureData.length > 0 ? (
+        {data.length > 0 ? (
           <div className="flex">
             <div className="w-full md:w-2/3 pr-4">
               <ResponsiveContainer width="110%" height={150}>
-                <LineChart data={temperatureData}>
+                <LineChart data={data}>
                   <XAxis dataKey="time" tickFormatter={formatXAxisTick} />
                   <YAxis />
                   <CartesianGrid strokeDasharray="3 3" />
@@ -223,11 +227,11 @@ const ReadingsComponent = () => {
             </div>
             <div className="w-full md:w-1/3 text-center">
               <p className="text-xl font-semibold mb-2">Last Light:</p>
-              <p className="text-3xl font-bold">{temperatureData[temperatureData.length - 1]?.light}</p>
+              <p className="text-3xl font-bold">{data[data.length - 1]?.light}</p>
             </div>
           </div>
         ) : (
-          <p>No temperature data available</p>
+          <p>No Light data available</p>
         )}
       </div>
     </div>
