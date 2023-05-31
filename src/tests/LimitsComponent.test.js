@@ -17,6 +17,20 @@ describe("Limits", () => {
       expect(screen.getByTestId("co2-input").value).toBe("800");
     });
   });
+  describe("handleUTempChange function", () => {
+    it("should update Upper Temperature state with sanitized value", () => {
+      render(<Limits />);
+
+      // Find the CO2 input element
+      const TempUpInput = screen.getByTestId("tempUp-input");
+
+      // Simulate a change event on the input
+      fireEvent.change(TempUpInput, { target: { value: "2A2. d" } });
+
+      // Verify that the CO2 state is updated with the sanitized value
+      expect(screen.getByTestId("tempUp-input").value).toBe("22");
+    });
+  });
   describe("checkIfValid", () => {
     it("returns true when all limits are valid", () => {
       const result = checkIfValid("10", "20", "30", "40", "50");

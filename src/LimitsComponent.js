@@ -132,6 +132,7 @@ const Limits = () => {
                 <input
                   value={maxTemperature}
                   onChange={handleUTempChange}
+                  data-testid="tempUp-input"
                   type="text"
                   pattern="[0-9]*"
                   inputmode="numeric"
