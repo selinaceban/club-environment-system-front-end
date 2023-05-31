@@ -45,6 +45,20 @@ describe("Limits", () => {
       expect(screen.getByTestId("tempLow-input").value).toBe("15");
     });
   });
+  describe("handleUHumChange function", () => {
+    it("should update Upper Humidity state with sanitized value", () => {
+      render(<Limits />);
+
+      // Find the UHum input element
+      const HumUpInput = screen.getByTestId("humUp-input");
+
+      // Simulate a change event on the input
+      fireEvent.change(HumUpInput, { target: { value: "A.6asl ,O0ASD" } });
+
+      // Verify that the UHum state is updated with the sanitized value
+      expect(screen.getByTestId("humUp-input").value).toBe("60");
+    });
+  });
   describe("handleLHumChange function", () => {
     it("should update Lower Humidity state with sanitized value", () => {
       render(<Limits />);
