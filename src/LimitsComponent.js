@@ -84,6 +84,7 @@ const Limits = () => {
     }
   };
 
+
   useEffect(() => {
     const fetchLimitsData = async () => {
       try {
@@ -133,6 +134,7 @@ const Limits = () => {
                   value={maxTemperature}
                   onChange={handleUTempChange}
                   data-testid="tempUp-input"
+
                   type="text"
                   pattern="[0-9]*"
                   inputmode="numeric"
@@ -253,7 +255,7 @@ const Limits = () => {
             data-testid="submit-button"
             type="submit"
             onClick={handleSubmit}
-            className="mt-7 w-96 h-14 items-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            className="mt-7 w-96 h-14 items-center rounded-md bg-blue-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
           >
             Save Limits
           </button>
@@ -264,22 +266,30 @@ const Limits = () => {
 };
 
 export const checkIfValid = (LTemp, UTemp, LHum, UHum, CO2) => {
-  if (parseInt(LTemp) < parseInt(UTemp)) {
-    if (parseInt(LHum) < parseInt(UHum)) {
-      if (0 < parseInt(CO2)) {
-        return true;
+    if (
+      0 <= parseInt(LTemp) &&
+      parseInt(LTemp) < parseInt(UTemp) &&
+      parseInt(UTemp) <= 255
+    ) {
+      if (
+        0 <= parseInt(LHum) &&
+        parseInt(LHum) < parseInt(UHum) &&
+        parseInt(UHum) <= 100
+      ) {
+        if (0 <= parseInt(CO2) && parseInt(CO2) <= 25500) {
+          return true;
+        } else {
+          alert("Invalid CO2 limit");
+          return false;
+        }
       } else {
-        alert("Invalid CO2 limit");
+        alert("Invalid Humidity limits");
         return false;
       }
     } else {
-      alert("Invalid Humidity limits");
+      alert("Invalid Temperature limits");
       return false;
     }
-  } else {
-    alert("Invalid Temperature limits");
-    return false;
-  }
-};
+  };
 
 export default Limits;
