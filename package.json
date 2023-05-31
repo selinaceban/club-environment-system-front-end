@@ -1,12 +1,11 @@
 {
+  "homepage": "http://selinaceban.github.io/club-environment-system-front-end",
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@heroicons/react": "^1.0.6",
-
     "@jridgewell/sourcemap-codec": "^1.4.15",
-
     "@material-tailwind/react": "^2.0.1",
     "@tailwindcss/forms": "^0.5.3",
     "@testing-library/jest-dom": "^5.16.5",
@@ -25,6 +24,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -48,8 +49,8 @@
     ]
   },
   "devDependencies": {
-
     "@rollup/plugin-terser": "^0.4.3",
+    "gh-pages": "^5.0.0",
     "install": "^0.13.0",
     "npm": "^9.6.7",
     "tailwindcss": "^3.3.2"
