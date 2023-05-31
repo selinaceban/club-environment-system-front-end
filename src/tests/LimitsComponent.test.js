@@ -39,10 +39,24 @@ describe("Limits", () => {
       const TempLowInput = screen.getByTestId("tempLow-input");
 
       // Simulate a change event on the input
-      fireEvent.change(TempLowInput, { target: { value: "2A2. d" } });
+      fireEvent.change(TempLowInput, { target: { value: "1A.aslkd 5" } });
 
       // Verify that the LTemp state is updated with the sanitized value
-      expect(screen.getByTestId("tempLow-input").value).toBe("22");
+      expect(screen.getByTestId("tempLow-input").value).toBe("15");
+    });
+  });
+  describe("handleLHumChange function", () => {
+    it("should update Lower Humidity state with sanitized value", () => {
+      render(<Limits />);
+
+      // Find the LHum input element
+      const HumLowInput = screen.getByTestId("humLow-input");
+
+      // Simulate a change event on the input
+      fireEvent.change(HumLowInput, { target: { value: "2A.asl ,5ASD" } });
+
+      // Verify that the LHum state is updated with the sanitized value
+      expect(screen.getByTestId("humLow-input").value).toBe("25");
     });
   });
   describe("checkIfValid", () => {
