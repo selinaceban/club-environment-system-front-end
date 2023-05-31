@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/club-environment-system-front-end/static/css/main.049ebb69.css",
+    "main.js": "/club-environment-system-front-end/static/js/main.787f18ef.js",
+    "static/js/787.28cb0dcd.chunk.js": "/club-environment-system-front-end/static/js/787.28cb0dcd.chunk.js",
+    "static/media/Valhalla2.jpg": "/club-environment-system-front-end/static/media/Valhalla2.965e0c1d894949016871.jpg",
+    "static/media/Valhalla3.jpg": "/club-environment-system-front-end/static/media/Valhalla3.396f3f72ee6927cc0046.jpg",
+    "static/media/Valhalla4.jpg": "/club-environment-system-front-end/static/media/Valhalla4.744d268644953d863434.jpg",
+    "static/media/Valhalla.jpg": "/club-environment-system-front-end/static/media/Valhalla.3992ceeb6104654b2aba.jpg",
+    "static/media/Valhalla5.jpg": "/club-environment-system-front-end/static/media/Valhalla5.a2a2433025f942d7498f.jpg",
+    "static/media/Valhalla6.jpg": "/club-environment-system-front-end/static/media/Valhalla6.d77ae586823f4b484f59.jpg",
+    "index.html": "/club-environment-system-front-end/index.html",
+    "main.049ebb69.css.map": "/club-environment-system-front-end/static/css/main.049ebb69.css.map",
+    "main.787f18ef.js.map": "/club-environment-system-front-end/static/js/main.787f18ef.js.map",
+    "787.28cb0dcd.chunk.js.map": "/club-environment-system-front-end/static/js/787.28cb0dcd.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.049ebb69.css",
+    "static/js/main.787f18ef.js"
+  ]
+}
