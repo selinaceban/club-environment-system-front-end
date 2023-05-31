@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import moment from 'moment';
@@ -9,7 +9,7 @@ const EditPopup = ({ rowData, onClose, onSubmit }) => {
   const [updatedComment, setUpdatedComment] = useState(comment);
 
   const handleSubmit = () => {
-    const updatedData = { id: rowData.id, comment: updatedComment, time: rowData.time, temperature: rowData.temperature, humidity: rowData.humidity, co2: rowData.co2};
+    const updatedData = { id: rowData.id, comment: updatedComment, time: rowData.time, temperature: rowData.temperature, humidity: rowData.humidity, co2: rowData.co2 };
 
     fetch('https://web-api-j4b5eryumq-ez.a.run.app/comment', {
       method: 'PUT',
@@ -146,6 +146,36 @@ const LogTableComponent = () => {
     setEditPopupData(null);
   };
 
+
+  /* LIMITS*/
+  const [limits, setLimits] = useState(null);
+  useEffect(() => {
+    const fetchLimitsData = async () => {
+      try {
+        const response = await fetch('https://web-api-j4b5eryumq-ez.a.run.app/limits');
+        if (response.ok) {
+          const data = await response.json();
+          setLimits(data);
+          console.log(data);
+        } else {
+          throw new Error("Failed to fetch limits data");
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchLimitsData();
+  }, []);
+
+  const isLimitexceeded = (value, highLimit, lowLimit) => {
+    //check if it exceeds the high and low limits
+    if (value > highLimit || value < lowLimit) {
+      return true;
+    }
+  }
+
+
+
   return (
     <div>
       <h1 className="mb-10 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl text-center">
@@ -163,7 +193,7 @@ const LogTableComponent = () => {
         </div>
         <button
           onClick={handleSubmit}
-          className="m-1 items-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+          className="m-1 items-center rounded-md bg-blue-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
         >
           Submit
         </button>
@@ -183,10 +213,11 @@ const LogTableComponent = () => {
           <tbody>
             {data.map((row, index) => (
               <tr key={index}>
-                <td className="py-2 px-4 border-b">{moment(row.time).format('HH:mm')}</td>
-                <td className="py-2 px-4 border-b">{row.temperature}</td>
-                <td className="py-2 px-4 border-b">{row.humidity}</td>
-                <td className="py-2 px-4 border-b">{row.co2}</td>
+
+                <td className="">{moment(row.time).format('HH:mm')}</td>
+                <td className={isLimitexceeded(row.temperature, limits.maxTemperature, limits.minTemperature) ? "py-2 px-4 border-b bg-red-400" : "py-2 px-4 border-b"}>{row.temperature}</td>
+                <td className={isLimitexceeded(row.humidity, limits.maxHumidity, limits.minHumidity) ? "py-2 px-4 border-b bg-red-400" : "py-2 px-4 border-b"}>{row.humidity}</td>
+                <td className={isLimitexceeded(row.co2, limits.maxCo2) ? "py-2 px-4 border-b bg-red-400" : "py-2 px-4 border-b"}>{row.co2}</td>
                 <td className="py-2 px-4 border-b" style={{ wordBreak: 'break-word' }}>{row.comment}</td>
                 <td className="py-2 px-4 border-b">
                   <button
