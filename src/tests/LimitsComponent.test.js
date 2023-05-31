@@ -1,8 +1,57 @@
 import { checkIfValid } from "../LimitsComponent";
 import Limits from "../LimitsComponent";
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 
 describe("Limits", () => {
+  test("handleSubmit function", async () => {
+    // Mock the necessary dependencies
+    global.fetch = jest.fn(() =>
+      Promise.resolve({
+        ok: true,
+      })
+    );
+
+    global.alert = jest.fn();
+
+    render(<Limits />);
+
+    // Mock input values
+    const minTemperatureInput = screen.getByTestId("tempLow-input");
+    const maxTemperatureInput = screen.getByTestId("tempUp-input");
+    const minHumidityInput = screen.getByTestId("humLow-input");
+    const maxHumidityInput = screen.getByTestId("humUp-input");
+    const maxCo2Input = screen.getByTestId("co2-input");
+
+    fireEvent.change(minTemperatureInput, { target: { value: "18" } });
+    fireEvent.change(maxTemperatureInput, { target: { value: "24" } });
+    fireEvent.change(minHumidityInput, { target: { value: "30" } });
+    fireEvent.change(maxHumidityInput, { target: { value: "60" } });
+    fireEvent.change(maxCo2Input, { target: { value: "800" } });
+
+    // Find and submit the form
+    const submitButton = screen.getByTestId("submit-button");
+    fireEvent.click(submitButton);
+    await waitFor(() => {});
+    // Assert that the necessary functions were called
+    expect(fetch).toHaveBeenCalledWith(
+      "https://web-api-j4b5eryumq-ez.a.run.app/limits",
+      expect.objectContaining({
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          minTemperature: "18",
+          maxTemperature: "24",
+          minHumidity: "30",
+          maxHumidity: "60",
+          maxCo2: "800",
+        }),
+      })
+    );
+
+    expect(alert).toHaveBeenCalledWith("Limits saved successfully");
+  });
   describe("handleCO2Change function", () => {
     it("should update CO2 state with sanitized value", () => {
       render(<Limits />);
