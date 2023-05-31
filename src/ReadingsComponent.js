@@ -105,8 +105,8 @@ const ReadingsComponent = () => {
         <h1 className="py-1 px-3 text-2xl font-bold mb-4">Temperature</h1>
         {data.length > 0 ? (
           <div className="flex">
-            <div className="w-full md:w-2/3 pr-4">
-              <ResponsiveContainer width="110%" height={150}>
+            <div className="w-full md:w-3/3 pr-4">
+              <ResponsiveContainer width="100%" height={150}>
                 <LineChart data={data}>
                   <XAxis dataKey="time" tickFormatter={formatXAxisTick} />
                   <YAxis />
@@ -132,8 +132,8 @@ const ReadingsComponent = () => {
         <h1 className="py-1 px-3 text-2xl font-bold mb-4">Humidity</h1>
         {data.length > 0 ? (
           <div className="flex">
-            <div className="w-full md:w-2/3 pr-4">
-              <ResponsiveContainer width="110%" height={150}>
+            <div className="w-full md:w-3/3 pr-4">
+              <ResponsiveContainer width="100%" height={150}>
                 <LineChart data={data}>
                   <XAxis dataKey="time" tickFormatter={formatXAxisTick} />
                   <YAxis />
@@ -159,8 +159,8 @@ const ReadingsComponent = () => {
         <h1 className="py-1 px-3 text-2xl font-bold mb-4">CO2</h1>
         {data.length > 0 ? (
           <div className="flex">
-            <div className="w-full md:w-2/3 pr-4">
-              <ResponsiveContainer width="110%" height={150}>
+            <div className="w-full md:w-3/3 pr-4">
+              <ResponsiveContainer width="100%" height={150}>
                 <LineChart data={data}>
                   <XAxis dataKey="time" tickFormatter={formatXAxisTick} />
                   <YAxis />
@@ -186,8 +186,8 @@ const ReadingsComponent = () => {
         <h1 className="py-1 px-3 text-2xl font-bold mb-4">Sound</h1>
         {data.length > 0 ? (
           <div className="flex">
-            <div className="w-full md:w-2/3 pr-4">
-              <ResponsiveContainer width="110%" height={150}>
+            <div className="w-full md:w-3/3 pr-4">
+              <ResponsiveContainer width="100%" height={150}>
                 <LineChart data={data}>
                   <XAxis dataKey="time" tickFormatter={formatXAxisTick} />
                   <YAxis />
@@ -213,8 +213,8 @@ const ReadingsComponent = () => {
         <h1 className="py-1 px-3 text-2xl font-bold mb-4">Light</h1>
         {data.length > 0 ? (
           <div className="flex">
-            <div className="w-full md:w-2/3 pr-4">
-              <ResponsiveContainer width="110%" height={150}>
+            <div className="w-full md:w-3/3 pr-4">
+              <ResponsiveContainer width="100%" height={150}>
                 <LineChart data={data}>
                   <XAxis dataKey="time" tickFormatter={formatXAxisTick} />
                   <YAxis />
