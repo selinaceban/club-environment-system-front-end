@@ -34,7 +34,7 @@ const EditPopup = ({ rowData, onClose, onSubmit }) => {
 
   return (
     <div className="fixed inset-0 flex items-center justify-center z-10">
-      <div className="bg-white rounded-lg shadow-lg p-4">
+      <div className="bg-white rounded-lg shadow-lg p-4 w-1/2">
         <h2 className="text-lg font-semibold mb-4">Edit Data</h2>
         <form>
           <div>
