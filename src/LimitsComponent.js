@@ -84,25 +84,6 @@ const Limits = () => {
     }
   };
 
-  const checkIfValid = (LTemp, UTemp, LHum, UHum, CO2) => {
-    if (parseInt(LTemp) < parseInt(UTemp)) {
-      if (parseInt(LHum) < parseInt(UHum)) {
-        if (0 < parseInt(CO2)) {
-          return true;
-        } else {
-          alert("Invalid CO2 limit");
-          return false;
-        }
-      } else {
-        alert("Invalid Humidity limits");
-        return false;
-      }
-    } else {
-      alert("Invalid Temperature limits");
-      return false;
-    }
-  };
-
   useEffect(() => {
     const fetchLimitsData = async () => {
       try {
@@ -274,6 +255,25 @@ const Limits = () => {
       </div>
     </div>
   );
+};
+
+export const checkIfValid = (LTemp, UTemp, LHum, UHum, CO2) => {
+  if (parseInt(LTemp) < parseInt(UTemp)) {
+    if (parseInt(LHum) < parseInt(UHum)) {
+      if (0 < parseInt(CO2)) {
+        return true;
+      } else {
+        alert("Invalid CO2 limit");
+        return false;
+      }
+    } else {
+      alert("Invalid Humidity limits");
+      return false;
+    }
+  } else {
+    alert("Invalid Temperature limits");
+    return false;
+  }
 };
 
 export default Limits;
