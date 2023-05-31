@@ -21,14 +21,28 @@ describe("Limits", () => {
     it("should update Upper Temperature state with sanitized value", () => {
       render(<Limits />);
 
-      // Find the CO2 input element
+      // Find the UTemp input element
       const TempUpInput = screen.getByTestId("tempUp-input");
 
       // Simulate a change event on the input
       fireEvent.change(TempUpInput, { target: { value: "2A2. d" } });
 
-      // Verify that the CO2 state is updated with the sanitized value
+      // Verify that the UTemp state is updated with the sanitized value
       expect(screen.getByTestId("tempUp-input").value).toBe("22");
+    });
+  });
+  describe("handleLTempChange function", () => {
+    it("should update Lower Temperature state with sanitized value", () => {
+      render(<Limits />);
+
+      // Find the LTemp input element
+      const TempLowInput = screen.getByTestId("tempLow-input");
+
+      // Simulate a change event on the input
+      fireEvent.change(TempLowInput, { target: { value: "2A2. d" } });
+
+      // Verify that the LTemp state is updated with the sanitized value
+      expect(screen.getByTestId("tempLow-input").value).toBe("22");
     });
   });
   describe("checkIfValid", () => {
